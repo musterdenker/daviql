@@ -1,0 +1,92 @@
+<h1><%= @query.name%></h1>
+<%= link_to "back", url_for(:action => 'start', :controller => '/facade') %>
+
+<br>
+<br>
+
+<script type="text/javascript" charset="utf-8">
+			var asInitVals = new Array();
+			$(document).ready(function() {
+				var oTable = $('#table').dataTable({
+					"sDom": 'T<"clear">lfrtip',
+						"oTableTools": {
+					        "buttons": [
+            "copy",
+            "csv",
+            "xls",
+            "pdf",
+            { "type": "print", "buttonText": "Print me!" }
+        ],
+			"sSwfPath": "<%= asset_path('dataTables/extras/swf/copy_csv_xls_pdf.swf')%>" 
+			///media/dataTables/extras/swf/copy_csv_xls_pdf.swf"
+		}
+		
+				});
+		
+			$("tfoot input").keyup( function () {
+					/* Filter on the column (the index) of this element */
+					oTable.fnFilter( this.value, $("tfoot input").index(this) );
+				} );
+				
+				
+				
+				/*
+				 * Support functions to provide a little bit of 'user friendlyness' to the textboxes in 
+				 * the footer
+				 */
+				$("tfoot input").each( function (i) {
+					asInitVals[i] = this.value;
+				} );
+				
+				$("tfoot input").focus( function () {
+					if ( this.className == "search_init" )
+					{
+						this.className = "";
+						this.value = "";
+					}
+				} );
+				
+				$("tfoot input").blur( function (i) {
+					if ( this.value == "" )
+					{
+						this.className = "search_init";
+						this.value = asInitVals[$("tfoot input").index(this)];
+					}
+				} );			
+					} );
+		</script>
+
+
+<table id="table" width="100%">
+    <thead>
+        <tr>
+        <% @data.first.each do |k,v| %>
+
+			<th><%= k %></th>
+
+		<% end %>	
+       </tr>
+    </thead>
+    <tbody>
+    	<% @data.each do |d| %>
+    		<tr>
+    		<% d.each do |k,v| %>
+    			<td>
+    				<%= v %>
+    			</td>
+    		<% end %>
+    		</tr>
+    	<% end %>	
+    </tbody>
+    	<tfoot>
+		<tr>
+		<% @data.first.each do |k,v| %>
+
+			<th><input type="text" size=10 name="<%= k %>" value="Filtern " class="search_init" /></th>
+
+		<% end %>
+
+			
+		</tr>
+	</tfoot>
+</table>

@@ -1,0 +1,10 @@
+<h1>Queries:</h1>
+
+<ul>
+	<% @queries.each do |query| %>
+		<li>
+			<%= link_to query.name, url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id) %>
+		</li>
+	<% end %>
+
+</ul>
