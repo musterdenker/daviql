@@ -36,4 +36,9 @@ Daviql::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.use_basic_auth = false
+  #config.basic_auth_user="user"
+  #config.basic_auth_pw = "changeme"
+
 end
