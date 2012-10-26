@@ -1,10 +1,17 @@
-<h1>Queries:</h1>
-
-<ul>
-	<% @queries.each do |query| %>
-		<li>
-			<%= link_to query.name, url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id) %>
-		</li>
-	<% end %>
-
-</ul>
+<div class="row-fluid">
+	<div class="span3">
+	  <div class="well sidebar-nav">
+	    <ul class="nav nav-list">
+	      <li class="nav-header">Queries:</li>
+	      	<% @queries.each do |query| %>
+				<li>
+					<%= link_to query.name, url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id) %>
+				</li>
+			<% end %>
+	    </ul>
+	  </div><!--/.well -->
+	</div><!--/span-->
+	<div class="span9">
+	  
+	</div>
+</div><!--/row-->
