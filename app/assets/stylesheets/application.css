@@ -11,8 +11,6 @@
  *= require_self
  *= require_tree .
  *= require dataTables/jquery.dataTables.bootstrap
- *= require dataTables/src/demo_table
- *= require dataTables/src/jquery.dataTables_themeroller
  *= require dataTables/extras/TableTools
  *= require dataTables/extras/TableTools_JUI
  */

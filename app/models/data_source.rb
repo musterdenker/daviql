@@ -3,6 +3,10 @@ class DataSource < ActiveRecord::Base
 
   has_many :queries
 
+  def database_type_enum
+    ['mysql']
+  end
+
   def fetch query_body
   	case self.database_type
 
