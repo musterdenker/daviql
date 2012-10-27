@@ -31,6 +31,8 @@ gem 'bootstrap-wysihtml5-rails'
 
 gem 'jquery-datatables-rails'
 
+gem "google_visualr", ">= 2.1"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

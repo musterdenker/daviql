@@ -56,6 +56,7 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    google_visualr (2.1.4)
     haml (3.1.7)
     highline (1.6.15)
     hike (1.2.1)
@@ -177,6 +178,7 @@ DEPENDENCIES
   capistrano
   coffee-rails (~> 3.2.1)
   devise
+  google_visualr (>= 2.1)
   jquery-datatables-rails
   jquery-rails
   mysql2

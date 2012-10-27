@@ -6,10 +6,9 @@
 			<%= @query.description%>
 		</p>
 		<br>
-		<% @data.each do |d| %>
-			<%d.each do |k,v| %>
-				<%= k %> ; <%= v %>
-			<% end %>
-		<% end %>	
+		<div id='chart'></div>
+		<%= render_chart(@chart, 'chart') %>
+
+
 	</div>
 </div>
