@@ -1,0 +1,15 @@
+<div class="row-fluid">
+	<div class="span12">
+		<h1><%= @query.name%></h1>
+		<br>
+		<p class="lead">
+			<%= @query.description%>
+		</p>
+		<br>
+		<% @data.each do |d| %>
+			<%d.each do |k,v| %>
+				<%= k %> ; <%= v %>
+			<% end %>
+		<% end %>	
+	</div>
+</div>

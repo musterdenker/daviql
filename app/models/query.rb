@@ -4,7 +4,7 @@ class Query < ActiveRecord::Base
   belongs_to :data_source
 
   def interpreter_enum
-    ['datatable']
+    ['datatable', 'graph']
   end
 
   def execute
