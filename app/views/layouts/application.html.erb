@@ -32,7 +32,9 @@
           <a class="brand" href="/">Daviql</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Admin", "/admin"  %></li>
+              <% if is_admin? %>
+                <li><%= link_to "Admin", "/admin"  %></li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
 	before_filter :authenticate_user!, :basic_auth	
 
+	helper_method :is_admin?
+
 	def basic_auth
 
 		if Rails.application.config.use_basic_auth
@@ -12,4 +14,9 @@ class ApplicationController < ActionController::Base
 		end
 
 	end
+
+	def is_admin?
+		current_user ? current_user.is_admin : false
+	end
+	
 end
