@@ -34,6 +34,9 @@
 				      <p>
 				      	<%= query.description%>
 				      </p>
+				      <p>
+				      	<a href="<%= url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id) %>" class="btn ">Show data</a>				      	
+				      </p>
 				   </div>
 			    </div>
 			  	</li>
