@@ -1,5 +1,5 @@
 class Query < ActiveRecord::Base
-  attr_accessible :body, :interpreter, :name, :data_source_id, :description
+  attr_accessible :body, :interpreter, :name, :context, :data_source_id, :description
 
   belongs_to :data_source
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121027144118) do
+ActiveRecord::Schema.define(:version => 20121101105244) do
 
   create_table "data_sources", :force => true do |t|
     t.string   "name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20121027144118) do
     t.datetime "updated_at",     :null => false
     t.integer  "data_source_id"
     t.text     "description"
+    t.string   "context"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
