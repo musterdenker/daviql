@@ -19,7 +19,7 @@ class Interpreter::GraphController < Interpreter::BaseController
 			a = []
 			a << d[xaxis]
 			values.each do |key|
-				a << d[key]
+				a << d[key].to_f
 			end
 			data_table.add_row a
 			logger.info "DATA #{a}"

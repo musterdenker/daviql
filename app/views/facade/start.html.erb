@@ -2,12 +2,14 @@
 	<div class="span3">
 	  <div class="well sidebar-nav">
 	    <ul class="nav nav-list">
-	      <li class="nav-header">Queries:</li>
-	      	<% @queries.each do |query| %>
+	    	<% @queries.group_by(&:context).sort_by{|a,b| a}.each do |context, context_queries| %>
+	      <li class="nav-header"><%= context %></li>
+	      	<% context_queries.sort{|a,b| a.name <=> b.name}.each do |query| %>
 				<li>
 					<a href="<%= url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id) %>"><i class='<%= list_icon query.interpreter %>'></i><%= query.name %></a>
 				</li>
 			<% end %>
+			<%end%>
 	    </ul>
 	  </div><!--/.well -->
 
@@ -20,19 +22,21 @@
 
 	</div><!--/span-->
 	<div class="span9">
-	  <h1>DaViQl <small>Data Visualization of SQl</small></h1> 
-
+		<div class="page-header">
+	  		<h1>DaViQl <small>Data Visualization of SQl</small></h1> 
+		</div>
 	  <div class="row-fluid">
-	  	<% @queries.group_by(&:context).each do |context, context_queries| %>
-	  	<h3><%= context %> </h3>
+	  	<% @queries.group_by(&:context).sort_by{|a,b| a}.each do |context, context_queries| %>
+	  	<h2><%= context %> </h2>
+		  <p>
 		  <ul class="thumbnails">
-	  		<% context_queries.each do |query| %>
+	  		<% context_queries.sort{|a,b| a.name <=> b.name}.each do |query| %>
 			  <li class="span3">
 			    <div class="thumbnail">
 			      <div class="caption">
 				      <h3><a href="<%= url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id) %>"><i class='<%= list_icon query.interpreter %>'></i> <%= query.name %></a></h3>
 				      <p>
-				      	<%= query.description%>
+				      	<%= truncate(query.description, :length => 150	) %>
 				      </p>
 				      <p>
 				      	<a href="<%= url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id) %>" class="btn ">Show data</a>				      	
@@ -42,6 +46,8 @@
 			  	</li>
 			 <% end %>
 			</ul>
+			</p>
+			<hr>
 			<% end %>
 		</div>
 	  
