@@ -3,32 +3,41 @@ class Interpreter::GraphController < Interpreter::BaseController
 	def show
 		@query = Query.find params[:id]
 		@data = @query.execute
-		data_table = GoogleVisualr::DataTable.new
 
-		xaxis = @data.first.to_a.first.first
+		if params[:format] == 'csv'
+	 		  csv = CSV.generate do |csv|
+			    csv << @data.first.to_a.map(&:first)
+			    @data.each do |e|
+			      csv << e.values
+			   	 end
+			  end
+			send_data csv
+		else
+			data_table = GoogleVisualr::DataTable.new
 
-		data_table.new_column('date', xaxis)
+			xaxis = @data.first.to_a.first.first
 
-		values = []
-		@data.first.to_a[1..-1].each do |element|
-			values << element.first
-			data_table.new_column('number', element.first)
-		end
+			data_table.new_column('date', xaxis)
 
-		@data.each do |d|
-			a = []
-			a << d[xaxis]
-			values.each do |key|
-				a << d[key].to_f
+			values = []
+			@data.first.to_a[1..-1].each do |element|
+				values << element.first
+				data_table.new_column('number', element.first)
 			end
-			data_table.add_row a
-			logger.info "DATA #{a}"
+
+			@data.each do |d|
+				a = []
+				a << d[xaxis]
+				values.each do |key|
+					a << d[key].to_f
+				end
+				data_table.add_row a
+				logger.info "DATA #{a}"
+			end
+
+			option = { :width => 2000, :height => 400, :title => @query.name, :legend => {:position => 'top', :textStyle => { :fontSize => 16}} }
+			@chart = GoogleVisualr::Interactive::ColumnChart.new(data_table, option)
 		end
-
-		option = { :width => 2000, :height => 400, :title => @query.name }
-		@chart = GoogleVisualr::Interactive::ColumnChart.new(data_table, option)
-
-
 	end
 
 end

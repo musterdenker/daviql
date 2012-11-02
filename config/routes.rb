@@ -3,7 +3,6 @@ Daviql::Application.routes.draw do
 
   devise_for :users
 
-  resources :queries
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
