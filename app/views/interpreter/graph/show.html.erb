@@ -9,6 +9,11 @@
 		<p class="lead">
 			<%= @query.description%>
 		</p>
+		<% if @query.data_source %>
+		  <p class="muted">
+		  	Source: <%= @query.data_source.name%>
+		  </p>
+		<% end %>
 		<br>
 		<div id='chart'></div>
 		<%= render_chart(@chart, 'chart') %>
