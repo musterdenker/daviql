@@ -4,6 +4,20 @@ class Interpreter::BaseController < ApplicationController
 		@query = get_query
 
 		@data = @query.execute
+
+		respond_to do |format|
+			format.html
+			format.csv { 
+	 		  	csv = CSV.generate do |csv|
+				    csv << @data.first.to_a.map(&:first)
+				    @data.each do |e|
+				      csv << e.values
+				   	 end
+				  end
+				send_data csv
+			}
+		end
+
 	end
 
 	protected 
