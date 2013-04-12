@@ -1,7 +1,7 @@
 class Interpreter::GraphController < Interpreter::BaseController
 
 	def show
-		@query = Query.find params[:id]
+		@query = get_query
 		@data = @query.execute
 
 		if params[:format] == 'csv'

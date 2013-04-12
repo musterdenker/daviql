@@ -11,30 +11,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121102083406) do
+ActiveRecord::Schema.define(:version => 20130408054001) do
 
   create_table "data_sources", :force => true do |t|
     t.string   "name"
     t.string   "database_type"
     t.string   "host"
     t.integer  "port"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
     t.string   "user"
     t.string   "password"
     t.string   "database_name"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "queries", :force => true do |t|
     t.string   "name"
     t.text     "body"
     t.string   "interpreter"
+    t.integer  "data_source_id"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
-    t.integer  "data_source_id"
     t.text     "description"
     t.string   "context",        :default => ""
   end
+
+  create_table "queries_users", :id => false, :force => true do |t|
+    t.integer "query_id"
+    t.integer "user_id"
+  end
+
+  add_index "queries_users", ["query_id", "user_id"], :name => "index_queries_users_on_query_id_and_user_id"
+  add_index "queries_users", ["user_id", "query_id"], :name => "index_queries_users_on_user_id_and_query_id"
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"

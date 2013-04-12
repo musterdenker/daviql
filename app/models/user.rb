@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   #devise :database_authenticatable, :registerable,
   #       :recoverable, :rememberable, :trackable, :validatable
 
+	has_and_belongs_to_many :queries
+
+	attr_accessible :query_ids
 
 if Rails.env.production?
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
