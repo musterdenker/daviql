@@ -41,6 +41,8 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
+    codemirror-rails (3.12)
+      railties (~> 3.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -191,6 +193,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-wysihtml5-rails
   capistrano
+  codemirror-rails
   coffee-rails (~> 3.2.1)
   devise
   google_visualr (>= 2.1)

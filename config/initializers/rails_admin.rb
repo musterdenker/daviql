@@ -96,9 +96,25 @@ RailsAdmin.config do |config|
   #     # using `field` instead of `configure` will exclude all other fields and force the ordering
   # end
 
+
+
   config.model 'User' do
     object_label_method do
       :custom_label_method
+    end
+  end
+
+  config.model 'Query' do
+    edit do
+      field :interpreter
+      field :name
+      field :context
+      field :data_source_id
+      field :description
+      field :body do
+        codemirror true
+      end
+
     end
   end
 

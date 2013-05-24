@@ -37,6 +37,8 @@ gem 'jquery-datatables-rails'
 
 gem "google_visualr", ">= 2.1"
 
+gem 'codemirror-rails'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
