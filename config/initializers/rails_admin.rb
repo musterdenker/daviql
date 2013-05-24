@@ -114,6 +114,8 @@ RailsAdmin.config do |config|
       field :body do
         codemirror true
       end
+      field :data_source
+      field :users
 
     end
   end
