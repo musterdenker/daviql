@@ -37,7 +37,7 @@
 				      <h4>#<%= query.id %> 
 				      <br> <a href="<%= url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id) %>"><i class='<%= list_icon query.interpreter %>'></i> <%= query.name %></a></h4>
 				      <p>
-				      	<%= truncate(query.description, :length => 150	) %>
+				      	<%= truncate(query.description, :length => 20	) %>
 				      </p>
 				      <% if query.data_source %>
 					      <p class="muted">
