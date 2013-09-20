@@ -8,19 +8,23 @@ class Interpreter::BaseController < ApplicationController
 		respond_to do |format|
 			format.html
 			format.csv { 
-	 		  	csv = CSV.generate do |csv|
-				    csv << @data.first.to_a.map(&:first)
-				    @data.each do |e|
-				      csv << e.values
-				   	 end
-				  end
-				send_data csv
+				send_csv @data
 			}
 		end
 
 	end
 
 	protected 
+
+	def send_csv data
+	  	csv = CSV.generate do |csv|
+		    csv << data.first.to_a.map(&:first)
+		    data.each do |e|
+		      csv << e.values
+		   	 end
+		  end
+		send_data csv
+	end
 
 	def get_query
 		q = Query.find_restricted params[:id], current_user.id

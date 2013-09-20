@@ -34,7 +34,8 @@
 			  <li class="span3">
 			    <div class="thumbnail">
 			      <div class="caption">
-				      <h4><a href="<%= url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id) %>"><i class='<%= list_icon query.interpreter %>'></i> <%= query.name %></a></h4>
+				      <h4>#<%= query.id %> 
+				      <br> <a href="<%= url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id) %>"><i class='<%= list_icon query.interpreter %>'></i> <%= query.name %></a></h4>
 				      <p>
 				      	<%= truncate(query.description, :length => 150	) %>
 				      </p>
@@ -44,9 +45,11 @@
 					      </p>
 					  <% end %>
 				      <p>
-				      	<a href="<%= url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id) %>" class="btn ">Show data</a>
-				      	<br>
-				      	<br>
+				      	<% unless query.interpreter == "csv" %>
+					      	<a href="<%= url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id) %>" class="btn ">Show data</a>
+					      	<br>
+					      	<br>
+				      	<% end %>
 				      	<a href="<%= url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id, :format => 'csv') %>" class="btn"><i class="icon-download"></i> Download csv</a>			      	
 			      	
 				      </p>

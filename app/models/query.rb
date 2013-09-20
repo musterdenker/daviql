@@ -16,7 +16,7 @@ class Query < ActiveRecord::Base
   end
 
   def interpreter_enum
-    ['datatable', 'graph']
+    ['datatable', 'graph', 'csv']
   end
 
   def execute
