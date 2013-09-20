@@ -110,7 +110,9 @@ RailsAdmin.config do |config|
       field :name
       field :context
       field :description
-      field :body, :codemirror
+      field :body do
+        codemirror true
+      end
       field :data_source
       field :users
 
