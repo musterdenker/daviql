@@ -1,5 +1,5 @@
 class DataSource < ActiveRecord::Base
-  attr_accessible :host, :name, :port, :database_type, :user, :password, :database_name
+  attr_accessible :host, :name, :port, :database_type, :user, :password, :database_name, :query_ids
 
   has_many :queries
 
