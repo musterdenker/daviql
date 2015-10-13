@@ -15,5 +15,4 @@
 //= require twitter/bootstrap
 //= require_tree .
 //= require dataTables/jquery.dataTables
-//= require dataTables/extras/TableTools
-//= require dataTables/extras/ZeroClipboard
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap

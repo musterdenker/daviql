@@ -7,7 +7,7 @@ gem 'rails', '4.0.0'
 
 #gem 'sqlite3'
 
-gem 'mysql2'
+gem 'pg'
 
 
 gem 'therubyracer'
@@ -17,14 +17,14 @@ gem 'less-rails-bootstrap'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',  '~> 4.0.0'
-  gem 'coffee-rails', '~> 4.0.0'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'less-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.3.0'
+  gem 'uglifier'
 end
 
 gem 'jquery-rails'
@@ -32,7 +32,6 @@ gem 'jquery-rails'
 
 gem 'rails_admin'
 gem 'bootstrap-wysihtml5-rails'
-
 gem 'jquery-datatables-rails'
 
 gem "google_visualr", ">= 2.1"
@@ -51,8 +50,7 @@ group :production do
 end
 
 # Deploy with Capistrano
-gem 'capistrano'
-gem 'rvm-capistrano'
+
 
 # To use debugger
 # gem 'debugger'
