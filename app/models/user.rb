@@ -6,15 +6,12 @@ class User < ActiveRecord::Base
 
 	has_and_belongs_to_many :queries
 
-	attr_accessible :query_ids
 
 if Rails.env.production?
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 else
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable 
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable
 end
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :is_admin #not good CHANGEME
-  # attr_accessible :title, :body
+
 end
