@@ -8,7 +8,7 @@ gem 'rails', '4.2.4'
 #gem 'sqlite3'
 
 gem 'pg'
-
+gem 'activerecord-postgis-adapter', '~> 0.6.6'
 # Gems used only for assets and not required
 # in production environments by default.
 

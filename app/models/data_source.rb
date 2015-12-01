@@ -18,13 +18,12 @@ class DataSource < ActiveRecord::Base
       client = PG::Connection.new(:host => self.host, :user => self.user,
                             :password=> self.password, :dbname => self.database_name)
 
-  		return client.query(query_body)
-
   	when 'something'
   		raise "something is not a real database"
   	else
   		raise "unknown database"
-  	end
-  end
+		end
 
+		client.query(query_body)
+  end
 end
