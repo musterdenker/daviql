@@ -1,4 +1,4 @@
-<script type="text/javascript" charset="utf-8" src="http://datatables.github.com/Plugins/integration/bootstrap/dataTables.bootstrap.js"></script>
+
 
 <div class="row-fluid">
 	<div class="span12">
@@ -13,14 +13,16 @@
 		      </p>
 		  <% end %>
 		<br>
-		
+
 
 		<script type="text/javascript" charset="utf-8">
 					var asInitVals = new Array();
 					$(document).ready(function() {
-						var oTable = $('#table').dataTable({
-				
-							"sDom": "<'row-fluid'<'span4'l><'span4'T><'span4'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+						var oTable = $('#table').DataTable({
+							"tableTools": {
+							            "sSwfPath": "/copy_csv_xls_pdf.swf"
+							        },
+							"dom": "<'row-fluid'<'span4'l><'span4'T><'span4'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
 												"oTableTools": {
 													"aButtons": [
 														"copy",
@@ -32,23 +34,23 @@
 												}
 
 						});
-				
+
 
 					$("tfoot input").keyup( function () {
 							/* Filter on the column (the index) of this element */
 							oTable.fnFilter( this.value, $("tfoot input").index(this) );
 						} );
-						
-						
-						
+
+
+
 						/*
-						 * Support functions to provide a little bit of 'user friendlyness' to the textboxes in 
+						 * Support functions to provide a little bit of 'user friendlyness' to the textboxes in
 						 * the footer
 						 */
 						$("tfoot input").each( function (i) {
 							asInitVals[i] = this.value;
 						} );
-						
+
 						$("tfoot input").focus( function () {
 							if ( this.className == "search_init" )
 							{
@@ -56,14 +58,14 @@
 								this.value = "";
 							}
 						} );
-						
+
 						$("tfoot input").blur( function (i) {
 							if ( this.value == "" )
 							{
 								this.className = "search_init";
 								this.value = asInitVals[$("tfoot input").index(this)];
 							}
-						} );			
+						} );
 							} );
 
 
@@ -78,7 +80,7 @@
 
 					<th><%= k %></th>
 
-				<% end %>	
+				<% end %>
 		       </tr>
 		    </thead>
 		    <tbody>
@@ -90,7 +92,7 @@
 		    			</td>
 		    		<% end %>
 		    		</tr>
-		    	<% end %>	
+		    	<% end %>
 		    </tbody>
 		    	<tfoot>
 				<tr>
@@ -100,7 +102,7 @@
 
 				<% end %>
 
-					
+
 				</tr>
 			</tfoot>
 		</table>
