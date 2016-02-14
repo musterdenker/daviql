@@ -1,0 +1,13 @@
+.container
+  .jumbotron
+    %h1
+      Hello Daviql
+    %p There should be text here ...
+  .row
+    - @queries.each do |q|
+      .col-md-4
+        .card.query
+          .card-block
+            %h4.card-title= q.id
+            %p.card-text= truncate(q.description, :length => 20  )
+            %a.btn.btn-primary{:href => url_for(:action => 'show', :controller => "interpreter/#{q.interpreter}", :id => q.id)} Show data

@@ -251,6 +251,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise!
   google_visualr (>= 2.1)
+  haml
   jquery-datatables-rails
   jquery-rails
   less-rails

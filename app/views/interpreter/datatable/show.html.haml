@@ -1,0 +1,84 @@
+.container-fluid
+  .row-fluid
+    .span12
+      %h1= @query.name
+      %br
+      %p.lead
+        = @query.description
+      - if @query.data_source
+        %p.muted
+          Source: #{@query.data_source.name}
+          %br
+          Records: #{@data.count}
+      %br
+      %script{:charset => "utf-8", :type => "text/javascript"}
+        var asInitVals = new Array();
+        $(document).ready(function() {
+        var oTable = $('#table').DataTable({
+        "tableTools": {
+        "sSwfPath": "/copy_csv_xls_pdf.swf"
+        },
+        "dom": "<'row-fluid'<'span4'l><'span4'T><'span4'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+        "oTableTools": {
+        "aButtons": [
+        "copy",
+        "print",
+        "csv",
+        "pdf",
+        "xls"
+        ]
+        }
+
+        });
+
+
+        $("tfoot input").keyup( function () {
+        \/* Filter on the column (the index) of this element */
+        oTable.fnFilter( this.value, $("tfoot input").index(this) );
+        } );
+
+
+
+        \/*
+        * Support functions to provide a little bit of 'user friendlyness' to the textboxes in
+        * the footer
+        */
+        $("tfoot input").each( function (i) {
+        asInitVals[i] = this.value;
+        } );
+
+        $("tfoot input").focus( function () {
+        if ( this.className == "search_init" )
+        {
+        this.className = "";
+        this.value = "";
+        }
+        } );
+
+        $("tfoot input").blur( function (i) {
+        if ( this.value == "" )
+        {
+        this.className = "search_init";
+        this.value = asInitVals[$("tfoot input").index(this)];
+        }
+        } );
+        } );
+      %table#table.table.table-striped.table-bordered{:cellspacing => "0", :width => "100%"}
+        %thead
+          %tr
+            - @data.first.each do |k,v|
+              %th= k
+        %tbody
+          - @data.each do |d|
+            %tr
+              - d.each do |k,v|
+                %td
+                  = v
+        %tfoot
+          %tr
+            - @data.first.each do |k,v|
+              %th
+                %input.search_init{:name => k, :size => "10", :type => "text", :value => "Filtern "}/
+      %a.btn{:href => url_for(:action => 'start', :controller => '/facade')}
+        %i.icon-backward
+        back
