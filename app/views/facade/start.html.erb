@@ -1,69 +1,25 @@
-<div class="row-fluid">
-	<div class="span3">
-	  <div class="well sidebar-nav">
-	    <ul class="nav nav-list">
-	    	<% @queries.group_by(&:context).sort_by{|a,b| a}.each do |context, context_queries| %>
-	      <li class="nav-header"><%= context %></li>
-	      	<% context_queries.sort{|a,b| a.name <=> b.name}.each do |query| %>
-				<li>
-					<a href="<%= url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id) %>"><i class='<%= list_icon query.interpreter %>'></i><%= query.name %></a>
-				</li>
-			<% end %>
-			<%end%>
-	    </ul>
-	  </div><!--/.well -->
+<div class="jumbotron">
+    <h1>Hello Daviql/h1>
+    <p>There should be text here ...</p>
+</div>
 
-	  <div class="thumbnail">
-		      <img src="http://placedog.com/300/200" alt="">
-		      <div class="caption">
-			      <h3>Just a random dog</h3>
-			   </div>
-		    </div>
+<div class="row">
 
-	</div><!--/span-->
-	<div class="span9">
-		<div class="page-header">
-	  		<h1>DaViQl <small>Data Visualization of SQl</small></h1> 
+<% @queries.each do |q| %>
+	<div class="col-md-4">
+		<div class="card">
+		  <div class="card-block">
+		    <h4 class="card-title"><%= q.id %></h4>
+		    <p class="card-text"><%= truncate(q.description, :length => 20	) %></p>
+		    <a href="<%= url_for(:action => 'show', :controller => "interpreter/#{q.interpreter}", :id => q.id) %>" class="btn btn-primary">Show data</a>
+
+		  </div>
 		</div>
-	  <div class="row-fluid">
-	  	<% @queries.group_by(&:context).sort_by{|a,b| a}.each do |context, context_queries| %>
-	  	<h2><%= context %> </h2>
-		  <p>
-		  <ul class="thumbnails">
-	  		<% context_queries.sort{|a,b| a.name <=> b.name}.each do |query| %>
-			  <li class="span3">
-			    <div class="thumbnail">
-			      <div class="caption">
-				      <h4>#<%= query.id %> 
-				      <br> <a href="<%= url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id) %>"><i class='<%= list_icon query.interpreter %>'></i> <%= query.name %></a></h4>
-				      <p>
-				      	<%= truncate(query.description, :length => 20	) %>
-				      </p>
-				      <% if query.data_source %>
-					      <p class="muted">
-					      	Source: <%= query.data_source.name%>
-					      </p>
-					  <% end %>
-				      <p>
-				      	<% unless query.interpreter == "csv" %>
-					      	<a href="<%= url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id) %>" class="btn ">Show data</a>
-					      	<br>
-					      	<br>
-				      	<% end %>
-				      	<a href="<%= url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id, :format => 'csv') %>" class="btn"><i class="icon-download"></i> Download csv</a>			      	
-			      	
-				      </p>
-				   </div>
-			    </div>
-			  	</li>
-			 <% end %>
-			</ul>
-			</p>
-			<hr>
-			<% end %>
-		</div>
-	  
-
-
 	</div>
-</div><!--/row-->
+
+
+<% end %>
+
+
+</div>
+

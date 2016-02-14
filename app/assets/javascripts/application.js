@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require tether
+//= require bootstrap
 //= require dataTables/jquery.dataTables
-//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require dataTables.bootstrap4.min
 //= require dataTables/extras/dataTables.tableTools
 //= require_tree .

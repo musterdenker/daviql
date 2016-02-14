@@ -13,10 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20130408054001) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "data_sources", force: true do |t|
+  create_table "data_sources", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "database_type"
     t.string   "host"
@@ -24,43 +21,51 @@ ActiveRecord::Schema.define(version: 20130408054001) do
     t.string   "user"
     t.string   "password"
     t.string   "database_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
-  create_table "queries", force: true do |t|
+  create_table "queries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.text     "body"
+    t.text     "body",           limit: 65535
     t.string   "interpreter"
     t.integer  "data_source_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "description"
-    t.string   "context",        default: ""
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.text     "description",    limit: 65535
+    t.string   "context",                      default: ""
   end
 
-  create_table "queries_users", id: false, force: true do |t|
+  create_table "queries_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "query_id"
     t.integer "user_id"
+    t.index ["query_id", "user_id"], name: "index_queries_users_on_query_id_and_user_id", using: :btree
+    t.index ["user_id", "query_id"], name: "index_queries_users_on_user_id_and_query_id", using: :btree
   end
 
-  add_index "queries_users", ["query_id", "user_id"], name: "index_queries_users_on_query_id_and_user_id", using: :btree
-  add_index "queries_users", ["user_id", "query_id"], name: "index_queries_users_on_user_id_and_query_id", using: :btree
-
-  create_table "rails_admin_histories", force: true do |t|
-    t.text     "message"
+  create_table "rails_admin_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "message",    limit: 65535
     t.string   "username"
     t.integer  "item"
     t.string   "table"
     t.integer  "month",      limit: 2
     t.integer  "year",       limit: 8
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
   end
 
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
+  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
+    t.index ["name"], name: "index_roles_on_name", using: :btree
+  end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
@@ -71,12 +76,17 @@ ActiveRecord::Schema.define(version: 20130408054001) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.boolean  "is_admin",               default: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  create_table "users_roles", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
+  end
 
 end

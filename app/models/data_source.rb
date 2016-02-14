@@ -1,5 +1,5 @@
-class DataSource < ActiveRecord::Base
-  attr_accessible :host, :name, :port, :database_type, :user, :password, :database_name, :query_ids
+class DataSource < ApplicationRecord
+#  attr_accessible :host, :name, :port, :database_type, :user, :password, :database_name, :query_ids
 
   has_many :queries
 
@@ -14,6 +14,7 @@ class DataSource < ActiveRecord::Base
 
   		client = Mysql2::Client.new(:host => self.host, :username => self.user,
                             :password=> self.password, :database => self.database_name)
+      return client.query(query_body)
 
     when 'postgresql'
       client = PG::Connection.new(:host => self.host, :user => self.user,
