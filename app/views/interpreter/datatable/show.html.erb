@@ -1,7 +1,7 @@
 
 
-<div class="row-fluid">
-	<div class="span12">
+<div class="row">
+	<div class="col-md-12">
 		<h1><%= @query.name%></h1>
 		<br>
 		<p class="lead">
@@ -19,10 +19,11 @@
 					var asInitVals = new Array();
 					$(document).ready(function() {
 						var oTable = $('#table').DataTable({
+							"pagingType": "full_numbers",
 							"tableTools": {
 							            "sSwfPath": "/copy_csv_xls_pdf.swf"
 							        },
-							"dom": "<'row-fluid'<'span4'l><'span4'T><'span4'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+							"dom": "<'row'<'col-md-4'l><'col-md-4'T><'col-md-4'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
 												"oTableTools": {
 													"aButtons": [
 														"copy",
@@ -107,7 +108,17 @@
 			</tfoot>
 		</table>
 
-		<a href="<%= url_for(:action => 'start', :controller => '/facade') %>" class="btn"><i class="icon-backward"></i> back</a>
+		<a href="<%= url_for(:action => 'start', :controller => '/facade') %>" class="btn btn-default"><i class="fa fa-arrow-left"></i> back</a>
 
 	</div>
 </div><!--/row-->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="alert alert-info" role="alert">
+      <pre>
+        <%= @query.body %>
+      </pre>
+    </div>
+  </div>
+</div>

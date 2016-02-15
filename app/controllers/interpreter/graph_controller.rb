@@ -10,7 +10,7 @@ class Interpreter::GraphController < Interpreter::BaseController
 
 				xaxis = @data.first.to_a.first.first
 
-				data_table.new_column('date', xaxis)
+				data_table.new_column('string', xaxis)
 
 				values = []
 				@data.first.to_a[1..-1].each do |element|
@@ -31,7 +31,7 @@ class Interpreter::GraphController < Interpreter::BaseController
 				option = { :width => 2000, :height => 400, :title => @query.name, :legend => {:position => 'top', :textStyle => { :fontSize => 16}} }
 				@chart = GoogleVisualr::Interactive::ColumnChart.new(data_table, option)
 			}
-			format.csv { 
+			format.csv {
 	 		  	csv = CSV.generate do |csv|
 				    csv << @data.first.to_a.map(&:first)
 				    @data.each do |e|

@@ -3,9 +3,9 @@ module FacadeHelper
 	def list_icon interpreter
 		case interpreter
 		when 'datatable'
-			'icon-list-alt'
+			'fa fa-list-alt'
 		when 'graph'
-			'icon-signal'	
+			'fa fa-bar-chart'
 		end
 	end
 

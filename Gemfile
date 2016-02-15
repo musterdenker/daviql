@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0'
+gem 'rails', '4.2.4'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -8,27 +8,20 @@ gem 'rails', '4.0.0'
 #gem 'sqlite3'
 
 gem 'pg'
-
-
-gem 'therubyracer'
-gem 'twitter-bootstrap-rails'
-gem 'less-rails-bootstrap'
-
+gem 'activerecord-postgis-adapter', '~> 0.6.6'
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'less-rails'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier'
-end
-
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'less-rails'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', :platforms => :ruby
+gem 'uglifier'
 gem 'jquery-rails'
+gem 'therubyracer'
 
+gem "twitter-bootstrap-rails", '>= 3.2'
 
 gem 'rails_admin'
 gem 'bootstrap-wysihtml5-rails'

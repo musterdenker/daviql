@@ -1,9 +1,10 @@
-<div class="row-fluid">
-	<div class="span12">
+<div class="row">
+	<div class="col-md-12">
 		<h1><%= @query.name%></h1>
 		<br>
 		<p>
-			<a href="<%= url_for(:action => 'show', :controller => "interpreter/#{@query.interpreter}", :id => @query.id, :format => 'csv') %>" class="btn"><i class="icon-download"></i> download csv</a>
+			<a href="<%= url_for(:action => 'show', :controller => "interpreter/#{@query.interpreter}", :id => @query.id, :format => 'csv') %>" class="btn btn-info">
+			<i class="fa fa-download"></i>  download csv</a>
 		</p>
 		<br>
 		<p class="lead">
@@ -18,7 +19,7 @@
 		<div id='chart'></div>
 		<%= render_chart(@chart, 'chart') %>
 
-		<a href="<%= url_for(:action => 'start', :controller => '/facade') %>" class="btn"><i class="icon-backward"></i> back</a>
+		<a href="<%= url_for(:action => 'start', :controller => '/facade') %>" class="btn btn-default"><i class="fa fa-arrow-left"></i> back</a>
 
 	</div>
 </div>
