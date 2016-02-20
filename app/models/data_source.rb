@@ -8,7 +8,7 @@ class DataSource < ApplicationRecord
   end
 
   def fetch query_body
-  	case self.database_type
+  	case self.database_type.to_sym
 
   	when :mysql
   		client = Mysql2::Client.new(:host => self.host, :username => self.user,
