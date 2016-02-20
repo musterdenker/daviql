@@ -33,13 +33,11 @@
 :javascript
   var asInitVals = new Array();
   $(document).ready(function() {
-    var oTable = $('#table').DataTable({
-    });
-
+    var oTable = $('#table').DataTable({});
 
     $("tfoot input").keyup( function () {
     /* Filter on the column (the index) of this element */
-    oTable.fnFilter( this.value, $("tfoot input").index(this) );
+      oTable.fnFilter( this.value, $("tfoot input").index(this) );
     } );
 
 
