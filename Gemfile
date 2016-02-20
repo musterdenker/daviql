@@ -8,7 +8,7 @@ gem 'rails', '5.0.0.beta2'
 
 #gem 'sqlite3'
 
-#gem 'pg'
+gem 'pg'
 gem 'mysql2'
 gem 'puma'
 

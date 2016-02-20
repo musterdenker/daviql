@@ -1,12 +1,13 @@
 .container
-  .jumbotron
-    %h1
-      Hello Daviql
-    %p
-      Just some text
   %div{id:"card_list"}
     %fieldset.form-group
       %input.form-control.form-control-lg.search{:placeholder => "Search", :type => "text"}
+        - if @queries.empty?
+          .jumbotron
+            %h1
+              Hello Daviql
+            %p
+              Just some text
     %ul.list.row
       - @queries.each do |q|
         %li.col-md-4

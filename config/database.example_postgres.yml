@@ -1,6 +1,6 @@
 default: &default
   adapter: postgresql
-  username: czacharias
+  username: postgres
   password:
   pool: 10
 
