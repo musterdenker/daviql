@@ -1,0 +1,21 @@
+:ruby
+  js_data = {
+    csspath: '/assets/codemirror.css',
+    jspath: '/assets/codemirror.js',
+    options: {
+              mode: "#{get_codemirror_mime_type(@object)}",
+              theme: '3024-day',
+              extraKeys: {"Ctrl-Space": "autocomplete"},
+              lineNumbers: true,
+              indentWithTabs: false,
+              smartIndent: true,
+              matchBrackets: true,
+              autofocus: true
+            },
+    locations:             {
+              mode: '/assets/codemirror/modes/sql.js',
+              theme: '/assets/codemirror/themes/3024-day.css'
+            }
+  }
+
+= form.text_area field.method_name, field.html_attributes.reverse_merge(data: { richtext: 'codemirror', options: js_data.to_json }).reverse_merge({ value: field.form_value })

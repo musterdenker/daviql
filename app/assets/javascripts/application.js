@@ -15,6 +15,10 @@
 //= require tether
 //= require bootstrap
 //= list
+//= require codemirror
+//= require codemirror/modes/sql
+//= require codemirror/addons/hint/show-hint
+//= require codemirror/addons/hint/sql-hint
 //= require dataTables/jquery.dataTables
 //= require dataTables.bootstrap4.min
 //= require dataTables/extras/dataTables.tableTools

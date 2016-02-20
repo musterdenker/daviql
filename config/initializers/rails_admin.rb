@@ -41,7 +41,7 @@ RailsAdmin.config do |config|
   # Each model configuration can alternatively:
   #   - stay here in a `config.model 'ModelName' do ... end` block
   #   - go in the model definition file in a `rails_admin do ... end` block
-  
+
   # This is your choice to make:
   #   - This initializer is loaded once at startup (modifications will show up when restarting the application) but all RailsAdmin configuration would stay in one place.
   #   - Models are reloaded at each request in development mode (when modified), which may smooth your RailsAdmin development workflow.
@@ -57,31 +57,31 @@ RailsAdmin.config do |config|
   # config.model 'Query' do
 
   #   # You can copy this to a 'rails_admin do ... end' block inside your query.rb model definition
-  
+
   #   # Found associations:
 
 
 
   #   # Found columns:
 
-  #     configure :id, :integer 
-  #     configure :name, :string 
-  #     configure :body, :text 
-  #     configure :interpreter, :string 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
+  #     configure :id, :integer
+  #     configure :name, :string
+  #     configure :body, :text
+  #     configure :interpreter, :string
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
 
   #   # Cross-section configuration:
-  
+
   #     # object_label_method :name     # Name of the method called for pretty printing an *instance* of ModelName
   #     # label 'My model'              # Name of ModelName (smartly defaults to ActiveRecord's I18n API)
   #     # label_plural 'My models'      # Same, plural
   #     # weight 0                      # Navigation priority. Bigger is higher.
   #     # parent OtherModel             # Set parent model for navigation. MyModel will be nested below. OtherModel will be on first position of the dropdown
   #     # navigation_label              # Sets dropdown entry's name in navigation. Only for parents!
-  
+
   #   # Section specific configuration:
-  
+
   #     list do
   #       # filters [:id, :name]  # Array of field names which filters should be shown by default in the table header
   #       # items_per_page 100    # Override default_items_per_page
@@ -110,7 +110,9 @@ RailsAdmin.config do |config|
       field :name
       field :context
       field :description
-      field :body
+      field :body do
+        partial "sql_partial"
+      end
       field :data_source
       field :users
 

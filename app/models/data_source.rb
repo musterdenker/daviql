@@ -4,19 +4,18 @@ class DataSource < ApplicationRecord
   has_many :queries
 
   def database_type_enum
-    ['postgresql', 'mysql']
+    DatabaseTypes.all.keys
   end
 
   def fetch query_body
   	case self.database_type
 
-  	when 'mysql'
-
+  	when :mysql
   		client = Mysql2::Client.new(:host => self.host, :username => self.user,
                             :password=> self.password, :database => self.database_name)
       return client.query(query_body)
 
-    when 'postgresql'
+    when :postgresql
       client = PG::Connection.new(:host => self.host, :user => self.user,
                             :password=> self.password, :dbname => self.database_name)
 
