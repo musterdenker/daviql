@@ -1,15 +1,11 @@
-.row-fluid
-  .span12
-    = render partial: "shared/interpreter_header"
-    %br
-      %p.lead
-        = @query.description
-      - if @query.data_source
-        %p.muted
-          Source: #{@query.data_source.name}
-      %br
-        #chart
-        = render_chart(@chart, 'chart')
-        %a.btn{:href => url_for(:action => 'start', :controller => '/facade')}
-          %i.icon-backward
-          back
+.container-fluid
+  .row-fluid
+    .col-md-12
+      = render partial: "shared/interpreter_header"
+  .row-fluid
+    .col-md-12
+      #chart
+      = render_chart(@chart, 'chart')
+      %a.btn{:href => url_for(:action => 'start', :controller => '/facade')}
+        %i.icon-backward
+        back

@@ -1,8 +1,10 @@
 .container-fluid
   .row-fluid
-    .span12
+    .col-md-12
       = render partial: "shared/interpreter_header"
       %br
+  .row-fluid
+    .col-md-12
       %table#table.table.table-striped.table-bordered{:cellspacing => "0", :width => "100%"}
         %thead
           %tr
