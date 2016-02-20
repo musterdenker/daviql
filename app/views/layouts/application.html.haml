@@ -27,9 +27,6 @@
           - if is_admin?
             %li.nav-item
               = link_to "Admin", "/admin" , class: "nav-link"
-        %form.form-inline.pull-xs-right
-          %input.form-control{:placeholder => "Search", :type => "text"}
-            %button.btn.btn-success-outline{:type => "submit"} Search
     = yield
     %footer
       %hr

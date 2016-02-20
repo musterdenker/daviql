@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require tether
 //= require bootstrap
+//= list
 //= require dataTables/jquery.dataTables
 //= require dataTables.bootstrap4.min
 //= require dataTables/extras/dataTables.tableTools

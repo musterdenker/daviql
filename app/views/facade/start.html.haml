@@ -4,8 +4,15 @@
       Hello Daviql
     %p
       Just some text
-  .row
-    - @queries.each do |q|
-      .col-md-4
-        .card.query
-          = render_card(q)
+  %div{id:"card_list"}
+    %input.form-control.search{:placeholder => "Search", :type => "text"}
+    %ul.list.row
+      - @queries.each do |q|
+        %li.col-md-4
+          .card.query
+            = render_card(q)
+:javascript
+    $(document).ready( function() {
+      var options={valueNames:['card-title']};
+      var cardlist = new List('card_list', options);
+    } );
