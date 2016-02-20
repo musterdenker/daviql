@@ -1,15 +1,7 @@
 .container-fluid
   .row-fluid
     .span12
-      %h1= @query.name
-      %br
-      %p.lead
-        = @query.description
-      - if @query.data_source
-        %p.muted
-          Source: #{@query.data_source.name}
-          %br
-          Records: #{@data.count}
+      = render partial: "shared/interpreter_header"
       %br
       %table#table.table.table-striped.table-bordered{:cellspacing => "0", :width => "100%"}
         %thead

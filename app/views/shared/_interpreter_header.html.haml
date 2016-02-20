@@ -1,0 +1,13 @@
+%h1= @query.name
+%br
+%p.lead
+  = @query.description
+- if @query.data_source
+  %p.muted
+    Source: #{@query.data_source.name}
+    %br
+    Records: #{@data.count}
+    %br
+    %a.btn{:href => url_for(:action => 'show', :controller => "interpreter/#{@query.interpreter}", :id => @query.id, :format => 'csv')}
+      %i.icon-download
+      download csv
