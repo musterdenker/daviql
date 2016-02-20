@@ -5,7 +5,8 @@
     %p
       Just some text
   %div{id:"card_list"}
-    %input.form-control.search{:placeholder => "Search", :type => "text"}
+    %fieldset.form-group
+      %input.form-control.form-control-lg.search{:placeholder => "Search", :type => "text"}
     %ul.list.row
       - @queries.each do |q|
         %li.col-md-4
@@ -13,6 +14,6 @@
             = render_card(q)
 :javascript
     $(document).ready( function() {
-      var options={valueNames:['card-title']};
+      var options={valueNames:['card-title', 'card-text']};
       var cardlist = new List('card_list', options);
     } );
