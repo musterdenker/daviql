@@ -1,4 +1,4 @@
-module DatabaseTypes
+class DatabaseTypes
   CONFIGURATION_FILE = File.join [Rails.root, 'config', 'database-types.yml']
 
   def self.all
