@@ -40,7 +40,7 @@ gem 'redis', '~> 3.0'
 
 gem 'bootstrap-wysihtml5-rails'
 gem 'jquery-datatables-rails'
-
+gem "font-awesome-rails"
 gem "google_visualr", ">= 2.1"
 
 gem 'codemirror-rails'
