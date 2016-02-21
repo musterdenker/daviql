@@ -15,7 +15,7 @@ class Query < ApplicationRecord
   end
 
   def interpreter_enum
-    ['datatable', 'graph', 'csv']
+    ['datatable', 'graph', 'csv', 'gauge']
   end
 
   def execute

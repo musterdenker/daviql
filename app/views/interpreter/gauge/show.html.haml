@@ -1,0 +1,22 @@
+.container-fluid
+  .row-fluid
+    .col-md-12
+      = render partial: "shared/interpreter_header"
+  .row-fluid
+    .col-md-12
+      %div{id:"gauge"}
+
+
+:javascript
+  var asInitVals = new Array();
+  $(document).ready(function() {
+    var g = new JustGage({
+      id: "gauge",
+      value: #{@data.first.to_a[0][1]},
+      min: 0,
+      max: #{@data.first.to_a[1][1]},
+      title: "#{@query.name}"
+    });
+  });
+
+

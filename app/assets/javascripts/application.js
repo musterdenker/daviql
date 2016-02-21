@@ -19,6 +19,8 @@
 //= require codemirror/modes/sql
 //= require codemirror/addons/hint/show-hint
 //= require codemirror/addons/hint/sql-hint
+//= require raphael
+//= require justgage
 //= require dataTables/jquery.dataTables
 //= require dataTables.bootstrap4.min
 //= require dataTables/extras/dataTables.tableTools
