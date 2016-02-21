@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-	before_filter :authenticate_user!, :basic_auth	
+	before_action :authenticate_user!, :basic_auth
 
 	helper_method :is_admin?
 
@@ -18,5 +18,5 @@ class ApplicationController < ActionController::Base
 	def is_admin?
 		current_user ? current_user.is_admin : false
 	end
-	
+
 end

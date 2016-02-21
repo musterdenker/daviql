@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130408054001) do
+ActiveRecord::Schema.define(version: 20160221195650) do
 
   create_table "data_sources", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20130408054001) do
     t.datetime "updated_at",                                null: false
     t.text     "description",    limit: 65535
     t.string   "context",                      default: ""
+    t.string   "auth_token"
   end
 
   create_table "queries_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
