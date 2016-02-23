@@ -22,12 +22,13 @@ Daviql::Application.routes.draw do
     resources :datatable
   end
 
+  resources :dashboards
 
-    namespace  :api do
-      namespace :v1 do
-        resources :queries
-      end
+  namespace  :api do
+    namespace :v1 do
+      resources :queries
     end
+  end
 
   # Sample resource route with options:
   #   resources :products do

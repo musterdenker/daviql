@@ -4,6 +4,8 @@ class Query < ApplicationRecord
 
   has_and_belongs_to_many :users
 
+  has_and_belongs_to_many :dashboards
+
   has_secure_token :auth_token
 
   def self.find_restricted id, user_id

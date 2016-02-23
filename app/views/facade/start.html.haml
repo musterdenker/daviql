@@ -9,6 +9,19 @@
             %p
               Just some text
     %ul.list.row
+      -@dashboards.each do |dashboard|
+        %li.col-md-4
+          .card.dashboard
+            .card-block
+              %h4.card-title
+                = fa_icon "dashboard"
+                = dashboard.name
+                %span.pull-right
+                  \#
+                  = dashboard.id
+              %p.card-text
+                = truncate(dashboard.description, :length => 20  )
+              %a.btn.btn-primary{:href => "#{dashboard_path(dashboard)}"} Show dashboard
       - @queries.each do |q|
         %li.col-md-4
           .card.query
