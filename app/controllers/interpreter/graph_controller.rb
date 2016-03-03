@@ -29,8 +29,6 @@ class Interpreter::GraphController < Interpreter::BaseController
         end
 
         option = {
-        	width: 1400,
-        	height: 400,
         	title: @query.name,
         	legend: { position: 'top', textStyle: { :fontSize => 16} },
         	material: true
