@@ -1,3 +1,4 @@
+require 'database_types'
 module ApplicationHelper
   def get_codemirror_mime_type query
     if query.data_source
