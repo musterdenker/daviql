@@ -1,2 +1,25 @@
-show.html.haml
-= @dashboard.name
+%h1= @dashboard.name
+%br
+%p.lead
+  = @dashboard.description
+
+
+
+#foo
+
+
+-@dashboard.queries.each do |query|
+  :javascript
+    $(document).ready( function() {
+      $.ajax({
+        type: "GET",
+        url: '#{url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id)}',
+        dataType: "SCRIPT",
+        success: function(data) {
+        }
+      });
+    });
+
+
+
+

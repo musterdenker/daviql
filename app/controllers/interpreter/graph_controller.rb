@@ -34,6 +34,7 @@ class Interpreter::GraphController < Interpreter::BaseController
         	material: true
         }
         @chart = GoogleVisualr::Interactive::ColumnChart.new(data_table, option)
+        render "interpreter/show"
       }
       format.csv {
         csv = CSV.generate do |csv|

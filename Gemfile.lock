@@ -102,6 +102,7 @@ GEM
       railties (>= 3.0)
     builder (3.2.2)
     byebug (8.2.2)
+    callsite (0.0.11)
     codemirror-rails (5.6)
       railties (>= 3.0, < 5)
     coderay (1.1.1)
@@ -159,6 +160,10 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    meta_request (0.4.0)
+      callsite (~> 0.0, >= 0.0.11)
+      rack-contrib (~> 1.1)
+      railties (>= 3.0.0, < 5.1.0)
     method_source (0.8.2)
     mime-types (2.99)
     mini_portile2 (2.0.0)
@@ -173,6 +178,8 @@ GEM
     puma (2.16.0)
     rack (2.0.0.alpha)
       json
+    rack-contrib (1.2.0)
+      rack (>= 0.9.1)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.0.beta2)
@@ -285,6 +292,7 @@ DEPENDENCIES
   jquery-datatables-rails
   jquery-rails
   less-rails
+  meta_request
   mysql2
   pg
   puma

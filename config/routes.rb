@@ -20,6 +20,7 @@ Daviql::Application.routes.draw do
 
   namespace :interpreter do
     resources :datatable
+    resources :gauge
   end
 
   resources :dashboards

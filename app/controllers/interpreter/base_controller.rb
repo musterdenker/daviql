@@ -6,15 +6,20 @@ class Interpreter::BaseController < ApplicationController
 		@data = @query.execute
 
 		respond_to do |format|
-			format.html
-			format.csv { 
+			format.html {
+				render "interpreter/show"
+			}
+			format.csv {
 				send_csv @data
+			}
+			format.js{
+				render  "interpreter/show"
 			}
 		end
 
 	end
 
-	protected 
+	protected
 
 	def send_csv data
 	  	csv = CSV.generate do |csv|
