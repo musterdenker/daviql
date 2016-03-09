@@ -1,0 +1,10 @@
+.card-block
+  %h4.card-title
+    = fa_icon "pie-chart"
+    = query.name
+    %span.pull-right
+      \#
+      = query.id
+  %p.card-text
+    = truncate(query.description, :length => 20  )
+  %a.btn.btn-primary{:href => url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id)} Show data
