@@ -7,7 +7,7 @@ class Interpreter::GraphController < Interpreter::BaseController
     respond_to do |format|
       format.html {
         @bar_chart = Presenters::Chart::Bar.new(@query, @data)
-
+        render "interpreter/show"
       }
       format.csv {
         csv = CSV.generate do |csv|
