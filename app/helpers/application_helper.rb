@@ -8,10 +8,10 @@ module ApplicationHelper
     end
   end
 
-  def inline_dimension query
+  def inline_dimension layout
     res = ""
-    res << "width: #{query.width}px;" unless query.width.blank?
-    res << "height: #{query.height}px;" unless query.height.blank?
+    res << "width: #{layout[:width]}px;" unless layout[:width].blank?
+    res << "height: #{layout[:height]}px;" unless layout[:height].blank?
   end
 
 end

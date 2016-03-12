@@ -3,10 +3,10 @@ class Interpreter::GraphController < Interpreter::BaseController
   def show
     @query = get_query
     @data = @query.execute
-
+    @layout = get_layout
     respond_to do |format|
       format.html {
-        @bar_chart = Presenters::Chart::Bar.new(@query, @data)
+        @bar_chart = Presenters::Chart::Bar.new(@query, @data, @layout)
         render "interpreter/show"
       }
       format.csv {
@@ -19,7 +19,7 @@ class Interpreter::GraphController < Interpreter::BaseController
         send_data csv
       }
       format.js{
-        @bar_chart = Presenters::Chart::Bar.new(@query, @data)
+        @bar_chart = Presenters::Chart::Bar.new(@query, @data, @layout)
         render  "interpreter/show"
       }
     end

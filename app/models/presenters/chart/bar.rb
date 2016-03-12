@@ -2,9 +2,10 @@ module Presenters
   module Chart
     class Bar
 
-      def initialize(query, data)
+      def initialize(query, data, layout)
         @data = data
         @query = query
+        @layout = layout
       end
 
       def data
@@ -33,10 +34,11 @@ module Presenters
         options = {
             title: @query.name,
             legend: { position: 'bottom', textStyle: { :fontSize => 16} },
-            material: true
+            material: true,
+            width: @layout[:width],
+            height: @layout[:height]
         }
-        options[:width] = @query.width unless @query.width.blank?
-        options[:height] = @query.height unless @query.height.blank?
+
         GoogleVisualr::Interactive::ColumnChart.new(data_table, options)
       end
 

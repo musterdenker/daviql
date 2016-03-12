@@ -11,21 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312124404) do
+ActiveRecord::Schema.define(version: 20160312131440) do
+
+  create_table "dashboard_elements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "dashboard_id"
+    t.integer "query_id"
+    t.integer "position"
+    t.integer "width"
+    t.integer "height"
+    t.index ["dashboard_id"], name: "index_dashboard_elements_on_dashboard_id", using: :btree
+    t.index ["query_id"], name: "index_dashboard_elements_on_query_id", using: :btree
+  end
 
   create_table "dashboards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.text     "description", limit: 65535
-  end
-
-  create_table "dashboards_queries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "dashboard_id"
-    t.integer "query_id"
-    t.integer "position"
-    t.index ["dashboard_id"], name: "index_dashboards_queries_on_dashboard_id", using: :btree
-    t.index ["query_id"], name: "index_dashboards_queries_on_query_id", using: :btree
   end
 
   create_table "data_sources", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

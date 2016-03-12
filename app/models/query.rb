@@ -4,7 +4,8 @@ class Query < ApplicationRecord
 
   has_and_belongs_to_many :users
 
-  has_and_belongs_to_many :dashboards
+  has_many :dashboard_elements
+  has_many :dashboards, through: :dashboard_elements
 
   has_secure_token :auth_token
 
