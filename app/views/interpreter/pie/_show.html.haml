@@ -1,2 +1,2 @@
-#chart
-= render_chart(@pie_chart.data, 'chart')
+%div{id: "chart-#{@query.id}"}
+= render_chart(@pie_chart.data, "chart-#{@query.id}")

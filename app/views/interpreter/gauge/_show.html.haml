@@ -1,11 +1,11 @@
-%div{id:"gauge"}
+%div{id:"gauge-#{@query.id}"}
 
 
 :javascript
   var asInitVals = new Array();
   $(document).ready(function() {
     var g = new JustGage({
-      id: "gauge",
+      id: "gauge-#{@query.id}",
       value: #{@data.first.to_a[0][1]},
       min: 0,
       max: #{@data.first.to_a[1][1]},
