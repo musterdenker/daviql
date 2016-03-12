@@ -1,4 +1,4 @@
-class Interpreter::GraphController < Interpreter::BaseController
+class Interpreter::PieController < Interpreter::BaseController
 
   def show
     @query = get_query
@@ -6,7 +6,7 @@ class Interpreter::GraphController < Interpreter::BaseController
 
     respond_to do |format|
       format.html {
-        @bar_chart = Presenters::Chart::Bar.new(@query, @data)
+        @pie_chart = Presenters::Chart::Pie.new(@query, @data)
 
       }
       format.csv {
