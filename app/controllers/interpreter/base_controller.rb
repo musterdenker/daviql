@@ -3,20 +3,29 @@ class Interpreter::BaseController < ApplicationController
 	def show
 		@query = get_query
 
-		@data = @query.get_data
-
 		@layout = get_layout
 
+		@data = @query.get_data
+
 		respond_to do |format|
-			format.html {
-				render "interpreter/show"
-			}
-			format.csv {
-				send_csv @data
-			}
-			format.js{
-				render  "interpreter/show"
-			}
+      format.html {
+        @bar_chart = (@query.presenter).constantize.new(@query, @data, @layout)
+        render "interpreter/show"
+      }
+      format.csv {
+        csv = CSV.generate do |csv|
+          csv << @data.first.to_a.map(&:first)
+          @data.each do |e|
+            csv << e.values
+          end
+        end
+        send_data csv
+      }
+      format.js{
+        @bar_chart = @query.presenter.constantize.new(@query, @data, @layout)
+        render  "interpreter/show"
+      }
+
 		end
 
 	end

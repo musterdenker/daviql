@@ -39,5 +39,9 @@ class Query < ApplicationRecord
   	data_source.fetch self.body
   end
 
+  def presenter
+    "Presenters::#{interpreter.titleize}"
+  end
+
 
 end
