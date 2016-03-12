@@ -2,7 +2,7 @@ class Interpreter::PieController < Interpreter::BaseController
 
   def show
     @query = get_query
-    @data = @query.execute
+    @data = @query.get_data
 
     respond_to do |format|
       format.html {

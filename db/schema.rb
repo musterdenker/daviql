@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312131440) do
+ActiveRecord::Schema.define(version: 20160312171428) do
 
   create_table "dashboard_elements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "dashboard_id"
@@ -44,16 +44,18 @@ ActiveRecord::Schema.define(version: 20160312131440) do
 
   create_table "queries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.text     "body",           limit: 65535
+    t.text     "body",             limit: 65535
     t.string   "interpreter"
     t.integer  "data_source_id"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
-    t.text     "description",    limit: 65535
-    t.string   "context",                      default: ""
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.text     "description",      limit: 65535
+    t.string   "context",                        default: ""
     t.string   "auth_token"
     t.integer  "width"
     t.integer  "height"
+    t.boolean  "async",                          default: false
+    t.datetime "async_updated_at"
   end
 
   create_table "queries_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

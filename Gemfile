@@ -36,6 +36,9 @@ gem 'jquery-rails'
 
 # Action Cable dependencies for the Redis adapter
 gem 'redis', '~> 3.0'
+gem 'sinatra', github: 'sinatra'
+gem 'sidekiq'
+gem 'sidekiq-cron'
 
 
 gem 'bootstrap-wysihtml5-rails'

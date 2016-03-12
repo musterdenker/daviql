@@ -1,4 +1,6 @@
 %h1= @query.name
+- if @query.async
+  = "Last updated at: #{@query.async_updated_at}"
 %br
 %p.lead
   = @query.description
@@ -6,7 +8,7 @@
   %p.muted
     Source: #{@query.data_source.name}
     %br
-    Records: #{@data.count}
+    Records: #{@data.try(:count)}
     %br
     %a.btn{:href => url_for(:action => 'show', :controller => "interpreter/#{@query.interpreter}", :id => @query.id, :format => 'csv')}
       %i.icon-download

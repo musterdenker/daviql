@@ -1,4 +1,5 @@
 class Query < ApplicationRecord
+  require "redis"
 
   belongs_to :data_source
 
@@ -19,6 +20,19 @@ class Query < ApplicationRecord
 
   def interpreter_enum
     ['datatable', 'graph', 'csv', 'gauge', 'pie']
+  end
+
+  def get_data
+    if async
+      redis = Redis.new
+      value = redis.get("query#{id}")
+      unless value.nil?
+        value = JSON.parse(value)
+        value["data"]
+      end
+    else
+      execute
+    end
   end
 
   def execute

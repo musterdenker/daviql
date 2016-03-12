@@ -2,8 +2,9 @@ class Interpreter::GraphController < Interpreter::BaseController
 
   def show
     @query = get_query
-    @data = @query.execute
     @layout = get_layout
+    @data = @query.get_data
+
     respond_to do |format|
       format.html {
         @bar_chart = Presenters::Chart::Bar.new(@query, @data, @layout)

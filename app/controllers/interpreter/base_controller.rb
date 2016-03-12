@@ -3,7 +3,7 @@ class Interpreter::BaseController < ApplicationController
 	def show
 		@query = get_query
 
-		@data = @query.execute
+		@data = @query.get_data
 
 		@layout = get_layout
 

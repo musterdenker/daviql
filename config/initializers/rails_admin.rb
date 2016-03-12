@@ -108,6 +108,7 @@ RailsAdmin.config do |config|
     edit do
       field :interpreter
       field :name
+      field :async
       field :auth_token do
         label do
           "API Token, will be autofilled on creation"
