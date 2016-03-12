@@ -7,4 +7,11 @@ module ApplicationHelper
       "text/x-sql"
     end
   end
+
+  def inline_dimension layout
+    res = ""
+    res << "width: #{layout[:width]}px;" unless layout[:width].blank?
+    res << "height: #{layout[:height]}px;" unless layout[:height].blank?
+  end
+
 end

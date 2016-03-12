@@ -1,0 +1,58 @@
+.container-fluid
+  .row-fluid
+    %h1= @dashboard.name
+    %br
+    %p.lead
+      = @dashboard.description
+  -@dashboard.queries.each do |query|
+    .row-fluid.pull-xs-left{id:"query-#{query.id}"}
+
+
+  -@dashboard.dashboard_elements.each do |dashboard_element|
+    -query = dashboard_element.query
+    :javascript
+      $(document).ready( function() {
+        var opts = {
+          lines: 5 // The number of lines to draw
+        , length: 56 // The length of each line
+        , width: 37 // The line thickness
+        , radius: 20 // The radius of the inner circle
+        , scale: 0.75 // Scales overall size of the spinner
+        , corners: 1 // Corner roundness (0..1)
+        , color: '#aaa' // #rgb or #rrggbb or array of colors
+        , opacity: 0.4 // Opacity of the lines
+        , rotate: 56 // The rotation offset
+        , direction: 1 // 1: clockwise, -1: counterclockwise
+        , speed: 0.5 // Rounds per second
+        , trail: 29 // Afterglow percentage
+        , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+        , zIndex: 2e9 // The z-index (defaults to 2000000000)
+        , className: 'spinner' // The CSS class to assign to the spinner
+        , top: '51%' // Top position relative to parent
+        , left: '50%' // Left position relative to parent
+        , shadow: false // Whether to render a shadow
+        , hwaccel: false // Whether to use hardware acceleration
+        , position: 'absolute' // Element positioning
+        }
+        var target = document.getElementById("query-#{query.id}")
+        var spinner = new Spinner(opts);
+
+        $.ajax({
+          type: "GET",
+          url: '#{url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id, :width => dashboard_element.width , :height => dashboard_element.height)}',
+          dataType: "SCRIPT",
+          success: function(data) {
+
+          },
+          beforeSend: function(jqXHR, settings){
+            spinner.spin(target);
+          },
+          complete: function(jqXHR, settings){
+            spinner.stop();
+          }
+        });
+      });
+
+
+
+

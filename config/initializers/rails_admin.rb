@@ -114,6 +114,8 @@ RailsAdmin.config do |config|
           "API Token, will be autofilled on creation"
         end
       end
+      field :width
+      field :height
       field :context
       field :description
       field :body do

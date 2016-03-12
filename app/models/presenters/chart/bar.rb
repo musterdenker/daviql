@@ -2,9 +2,10 @@ module Presenters
   module Chart
     class Bar
 
-      def initialize(query, data)
+      def initialize(query, data, layout)
         @data = data
         @query = query
+        @layout = layout
       end
 
       def data
@@ -30,12 +31,15 @@ module Presenters
           Rails.logger.info "DATA #{a}"
         end
 
-        option = {
+        options = {
             title: @query.name,
             legend: { position: 'bottom', textStyle: { :fontSize => 16} },
-            material: true
+            material: true,
+            width: @layout[:width],
+            height: @layout[:height]
         }
-        GoogleVisualr::Interactive::ColumnChart.new(data_table, option)
+
+        GoogleVisualr::Interactive::ColumnChart.new(data_table, options)
       end
 
     end

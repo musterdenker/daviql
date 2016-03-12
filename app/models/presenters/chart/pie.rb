@@ -40,11 +40,7 @@ module Presenters
           when 'postgresql'
             @data.fields
           when 'mysql'
-            column = []
-            @data.fetch_fields.each_with_index do |c, i|
-              column << c.name
-            end
-            column
+            @data.fields
         end
       end
 

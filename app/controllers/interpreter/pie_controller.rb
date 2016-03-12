@@ -7,7 +7,7 @@ class Interpreter::PieController < Interpreter::BaseController
     respond_to do |format|
       format.html {
         @pie_chart = Presenters::Chart::Pie.new(@query, @data)
-
+        render "interpreter/show"
       }
       format.csv {
         csv = CSV.generate do |csv|

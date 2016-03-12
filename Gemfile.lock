@@ -98,6 +98,12 @@ GEM
       execjs
       json
     bcrypt (3.1.10)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bootstrap (4.0.0.alpha3)
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
@@ -105,8 +111,10 @@ GEM
       railties (>= 3.0)
     builder (3.2.2)
     byebug (8.2.2)
+    callsite (0.0.11)
     codemirror-rails (5.6)
       railties (>= 3.0, < 5)
+    coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -162,6 +170,10 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    meta_request (0.4.0)
+      callsite (~> 0.0, >= 0.0.11)
+      rack-contrib (~> 1.1)
+      railties (>= 3.0.0, < 5.1.0)
     method_source (0.8.2)
     mime-types (2.99)
     mini_portile2 (2.0.0)
@@ -278,10 +290,6 @@ GEM
       raindrops (~> 0.7)
     warden (1.2.6)
       rack (>= 1.0)
-    web-console (3.1.1)
-      activemodel (>= 4.2)
-      debug_inspector
-      railties (>= 4.2)
     websocket-driver (0.6.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -290,6 +298,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   bootstrap
   bootstrap-wysihtml5-rails
   byebug
@@ -303,6 +313,7 @@ DEPENDENCIES
   jquery-datatables-rails
   jquery-rails
   less-rails
+  meta_request
   mysql2
   pg
   puma
@@ -322,7 +333,6 @@ DEPENDENCIES
   twitter-bootstrap-rails
   uglifier (>= 1.3.0)
   unicorn
-  web-console (~> 3.0)
 
 BUNDLED WITH
    1.11.2

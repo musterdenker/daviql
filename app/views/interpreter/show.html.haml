@@ -2,10 +2,11 @@
   .row-fluid
     .col-md-12
       = render partial: "shared/interpreter_header"
+      %br
   .row-fluid
     .col-md-12
       #chart
-      = render_chart(@bar_chart.data, 'chart')
+      = render partial: "interpreter/#{@query.interpreter}/show"
       %a.btn{:href => url_for(:action => 'start', :controller => '/facade')}
         %i.icon-backward
         back
