@@ -2,9 +2,10 @@ module Presenters
   module Chart
     class Pie
 
-      def initialize(query, data)
+      def initialize(query, data, layout)
         @data = data
         @query = query
+        @layout = layout
       end
 
       def data
@@ -26,7 +27,9 @@ module Presenters
             title: @query.name,
             legend: {position: 'right', textStyle: {:fontSize => 16}},
             height: 600,
-            material: false
+            material: false,
+            width: @layout[:width],
+            height: @layout[:height]
         }
         GoogleVisualr::Interactive::PieChart.new(data_table, option)
       end

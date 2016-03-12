@@ -2,11 +2,12 @@ class Interpreter::PieController < Interpreter::BaseController
 
   def show
     @query = get_query
+    @layout = get_layout
     @data = @query.get_data
 
     respond_to do |format|
       format.html {
-        @pie_chart = Presenters::Chart::Pie.new(@query, @data)
+        @pie_chart = Presenters::Chart::Pie.new(@query, @data, @layout)
         render "interpreter/show"
       }
       format.csv {
@@ -17,6 +18,10 @@ class Interpreter::PieController < Interpreter::BaseController
           end
         end
         send_data csv
+      }
+      format.js{
+        @pie_chart = Presenters::Chart::Pie.new(@query, @data, @layout)
+        render  "interpreter/show"
       }
     end
 
