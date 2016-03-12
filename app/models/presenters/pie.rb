@@ -32,12 +32,7 @@ module Presenters
     end
 
     def get_columns
-      case @query.data_source.database_type
-        when 'postgresql'
-          @data.fields
-        when 'mysql'
-          @data.fields
-      end
+      @data.fields
     end
 
     def get_data_rows

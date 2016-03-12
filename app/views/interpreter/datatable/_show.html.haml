@@ -1,17 +1,17 @@
 %table.table.table-striped.table-bordered{:cellspacing => "0", :width => "100%", :id => "table-#{@query.id}"}
   %thead
     %tr
-      - @data.first.each do |k,v|
+      - @data_to_present.first.each do |k,v|
         %th= k
   %tbody
-    - @data.each do |d|
+    - @data_to_present.each do |d|
       %tr
         - d.each do |k,v|
           %td
             = v
   %tfoot
     %tr
-      - @data.first.each do |k,v|
+      - @data_to_present.first.each do |k,v|
         %th
           %input.search_init{:name => k, :size => "10", :type => "text", :value => "Filtern "}/
 

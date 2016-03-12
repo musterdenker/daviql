@@ -9,7 +9,7 @@ class Interpreter::BaseController < ApplicationController
 
 		respond_to do |format|
       format.html {
-        @bar_chart = (@query.presenter).constantize.new(@query, @data, @layout)
+        @data_to_present = (@query.presenter).constantize.new(@query, @data, @layout)
         render "interpreter/show"
       }
       format.csv {
@@ -22,7 +22,7 @@ class Interpreter::BaseController < ApplicationController
         send_data csv
       }
       format.js{
-        @bar_chart = @query.presenter.constantize.new(@query, @data, @layout)
+        @data_to_present = @query.presenter.constantize.new(@query, @data, @layout)
         render  "interpreter/show"
       }
 
