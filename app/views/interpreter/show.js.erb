@@ -1,1 +1,1 @@
-$('#foo').append("<%= escape_javascript(render "interpreter/#{@query.interpreter}/show") %>");
+$('#<%= "query-#{@query.id}" %>').append("<%= escape_javascript(render "interpreter/#{@query.interpreter}/show") %>");

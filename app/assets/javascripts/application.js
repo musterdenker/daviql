@@ -15,6 +15,7 @@
 //= require tether
 //= require bootstrap
 //= list
+//= spin.min
 //= require codemirror
 //= require codemirror/modes/sql
 //= require codemirror/addons/hint/show-hint
