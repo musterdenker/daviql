@@ -3,18 +3,18 @@ class Interpreter::BaseController < ApplicationController
 	def show
 		@query = get_query
 
-		@data = @query.execute
+		@data = @query.get_data
 
 		respond_to do |format|
 			format.html
-			format.csv { 
+			format.csv {
 				send_csv @data
 			}
 		end
 
 	end
 
-	protected 
+	protected
 
 	def send_csv data
 	  	csv = CSV.generate do |csv|

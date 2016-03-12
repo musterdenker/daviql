@@ -11,7 +11,7 @@ module Api::V1
       unless params[:auth_token] == query.auth_token
         render_unauthorized and return
       end
-      data = query.execute
+      data = query.get_data
 
       render json: data
     end
