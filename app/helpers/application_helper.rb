@@ -7,4 +7,11 @@ module ApplicationHelper
       "text/x-sql"
     end
   end
+
+  def inline_dimension query
+    res = ""
+    res << "width: #{query.width}px;" unless query.width.blank?
+    res << "height: #{query.height}px;" unless query.height.blank?
+  end
+
 end

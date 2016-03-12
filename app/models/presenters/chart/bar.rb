@@ -30,12 +30,14 @@ module Presenters
           Rails.logger.info "DATA #{a}"
         end
 
-        option = {
+        options = {
             title: @query.name,
             legend: { position: 'bottom', textStyle: { :fontSize => 16} },
             material: true
         }
-        GoogleVisualr::Interactive::ColumnChart.new(data_table, option)
+        options[:width] = @query.width unless @query.width.blank?
+        options[:height] = @query.height unless @query.height.blank?
+        GoogleVisualr::Interactive::ColumnChart.new(data_table, options)
       end
 
     end

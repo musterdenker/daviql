@@ -18,6 +18,10 @@ class Interpreter::GraphController < Interpreter::BaseController
         end
         send_data csv
       }
+      format.js{
+        @bar_chart = Presenters::Chart::Bar.new(@query, @data)
+        render  "interpreter/show"
+      }
     end
 
   end
