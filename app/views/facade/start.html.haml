@@ -8,8 +8,6 @@
               Hello Daviql
             %p
               Just some text
-    %h2
-      Dashboards
     %ul.list.row
       - @dashboards.each do |dashboard|
         %li.col-md-4
@@ -24,9 +22,6 @@
               %p.card-text
                 = truncate(dashboard.description, :length => 20  )
               %a.btn.btn-primary{:href => "#{dashboard_path(dashboard)}"} Show dashboard
-    %h2
-      Queries
-    %ul.list.row
       - @queries.each do |q|
         %li.col-md-4
           .card.query
