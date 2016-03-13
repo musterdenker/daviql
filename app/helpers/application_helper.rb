@@ -14,4 +14,16 @@ module ApplicationHelper
     res << "height: #{layout[:height]}px;" unless layout[:height].blank?
   end
 
+  def image_or_placeholder(image_url)
+    image_url || image_path('fallbacks/retina_thumb_profile_image.png ')
+  end
+
+  def name_or_email(user)
+    name_or_email = user.full_name
+    if name_or_email.blank?
+      name_or_email = user.email
+    end
+    name_or_email
+  end
+
 end

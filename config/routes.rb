@@ -7,7 +7,7 @@ Daviql::Application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
 
   # The priority is based upon order of creation:
