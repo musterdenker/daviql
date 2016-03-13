@@ -17,3 +17,6 @@ rerun.txt
 /vendor/bundle
 .sass-cache
 /log/*
+
+.env
+.env.development

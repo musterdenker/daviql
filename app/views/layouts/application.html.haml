@@ -17,16 +17,7 @@
               %link{:href => "images/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}
   %body
     .pos-f-t
-      .navbar.navbar-light.bg-faded.navbar-static-top
-        %a.navbar-brand{:href => "#"} Daviql
-        %ul.nav.navbar-nav
-          %li.nav-item.active
-            %a.nav-link{:href => "/"}
-              Home
-              %span.sr-only (current)
-          - if is_admin?
-            %li.nav-item
-              = link_to "Admin", "/admin" , class: "nav-link"
+      = render 'shared/menu'
     = yield
     %footer
       %hr

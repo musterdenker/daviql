@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'dotenv-rails', :require => 'dotenv/rails-now', :groups => [:development, :test]
 gem 'rails', '5.0.0.beta2'
 
 
@@ -91,5 +91,8 @@ gem "rack-pjax", :github => "afcapel/rack-pjax"
 gem "remotipart", :github => "mshibuya/remotipart"
 gem 'rails_admin' , git: 'https://github.com/sferik/rails_admin'
 gem "devise", :git => 'https://github.com/plataformatec/devise'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-oauth2', '= 1.3.1'
+gem 'certified'
 
 #gem 'protected_attributes'
