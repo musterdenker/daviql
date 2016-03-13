@@ -15,7 +15,7 @@ module ApplicationHelper
   end
 
   def image_or_placeholder(image_url)
-    image_url || image_path('fallbacks/retina_thumb_profile_image.png ')
+    image_url || image_path('fallbacks/retina_thumb_profile_image.png')
   end
 
   def name_or_email(user)
