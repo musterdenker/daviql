@@ -44,7 +44,11 @@ module Presenters
           end
           values
         when 'mysql'
-          @data
+          values = []
+          @data.each do |val|
+            values << val.map{|k,v| [k,v]}.first
+          end
+          values
       end
     end
 
