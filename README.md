@@ -1,4 +1,4 @@
-Jarvis
+Daviql
 ======
 
 A small rails app for quick visualization / export of sql statements / build dashboards
