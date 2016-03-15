@@ -15,11 +15,11 @@ module Presenters
 
       data_table.add_rows(get_data_rows)
 
+      @layout[:height] = 500 if @layout[:height].blank?
 
       option = {
           title: @query.name,
           legend: {position: 'right', textStyle: {:fontSize => 16}},
-          height: 600,
           material: false,
           width: @layout[:width],
           height: @layout[:height]
@@ -46,7 +46,7 @@ module Presenters
         when 'mysql'
           values = []
           @data.each do |val|
-            values << val.map{|k,v| [k,v]}.first
+            values << val.values
           end
           values
       end
