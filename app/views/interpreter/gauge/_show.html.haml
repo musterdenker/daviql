@@ -6,9 +6,9 @@
   $(document).ready(function() {
     var g = new JustGage({
       id: "gauge-#{@query.id}",
-      value: #{@data_to_present.data.first.to_a[0][1]},
-      min: 0,
-      max: #{@data_to_present.data.first.to_a[1][1]},
+      value: #{@data_to_present.data['value']},
+      min: #{@data_to_present.data['min']},
+      max: #{@data_to_present.data['max']},
       title: "#{@query.name}"
     });
   });

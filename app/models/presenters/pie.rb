@@ -4,14 +4,9 @@ module Presenters
     def data
 
       data_table = GoogleVisualr::DataTable.new
-      get_columns.each do |column|
-        column_type = 'string'
-        case column
-          when 'count'
-            column_type = 'number'
-        end
-        data_table.new_column(column_type, column)
-      end
+
+      data_table.new_column('string', 'Label')
+      data_table.new_column('number', 'Number')
 
       data_table.add_rows(get_data_rows)
 
@@ -31,10 +26,6 @@ module Presenters
       @data.values.inspect
     end
 
-    def get_columns
-      @data.fields
-    end
-
     def get_data_rows
       case @query.data_source.database_type
         when 'postgresql'
@@ -46,7 +37,7 @@ module Presenters
         when 'mysql'
           values = []
           @data.each do |val|
-            values << val.values
+            values << [val['label'], val['number']]
           end
           values
       end

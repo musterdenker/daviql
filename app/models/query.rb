@@ -36,7 +36,7 @@ class Query < ApplicationRecord
   end
 
   def execute
-  	data_source.fetch self.body
+  	data_source.fetch(self.body).to_a
   end
 
   def presenter

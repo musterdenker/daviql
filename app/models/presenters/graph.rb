@@ -4,7 +4,7 @@ module Presenters
     def data
       data_table = GoogleVisualr::DataTable.new
 
-      xaxis = @data.first.to_a.first.first
+      xaxis = @data.first['group_column']
 
       data_table.new_column('string', xaxis)
 
@@ -21,7 +21,6 @@ module Presenters
           a << d[key].to_f
         end
         data_table.add_row a
-        Rails.logger.info "DATA #{a}"
       end
 
       options = {

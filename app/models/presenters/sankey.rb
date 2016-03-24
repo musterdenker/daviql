@@ -7,7 +7,7 @@ module Presenters
         data_table.new_column('string', 'To')
         data_table.new_column('number', 'Sum')
 
-        data_table.add_rows(@data.to_a.map{|e| [e.to_a[0].last,e.to_a[1].last,e.to_a[2].last]})
+        data_table.add_rows(@data.map{|e| [e['origin'],e['destination'],e['number']] } )
  #        [
  #          ['A', 'X', 5],
  #          ['A', 'Y', 7],
