@@ -1,16 +1,17 @@
 body{
   padding-top: 100px;
-  .card{
-    min-height: 250px;
-  }
-  #card_list{
-    ul{
-      list-style: none;
-      padding: 0px;
-      li{
+  .start{
+    .card{
+      min-height: 250px;
+    }
+    #card_list{
+      ul{
+        list-style: none;
+        padding: 0px;
+        li{
+        }
       }
     }
   }
-
 }
 

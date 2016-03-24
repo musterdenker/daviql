@@ -1,1 +1,9 @@
-= @data_to_present.data
+- @data.each do |element|
+  .col-lg-3.col-md-6
+    .card.card-inverse.card-info
+      .card-block.bg-info
+        %h6.text-uppercase
+          = element['label']
+        %h1.display-3
+          = element['number']
+.clearfix
