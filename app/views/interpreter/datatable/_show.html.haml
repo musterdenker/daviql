@@ -13,7 +13,7 @@
     %tr
       - @data_to_present.data.first.each do |k,v|
         %th
-          %input.search_init{:name => k, :size => "10", :type => "text", :value => "Filtern "}/
+          %input.search_init{:name => k, :size => "10", :type => "text", :value => "Filtern ", id: k}/
 
 
 
@@ -21,7 +21,7 @@
 :javascript
   var asInitVals = new Array();
   $(document).ready(function() {
-    var oTable = $('#table-#{@query.id}').DataTable({
+    var oTable = $('#table-#{@query.id}').dataTable({
       "scrollX": true,
      "drawCallback": function( settings ) {
        $(".dataTables_wrapper").css("width","#{@layout[:width]}px");
