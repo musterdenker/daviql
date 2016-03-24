@@ -24,10 +24,6 @@ Daviql::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
-  namespace :interpreter do
-    resources :datatable
-    resources :gauge
-  end
 
   resources :dashboards
 
