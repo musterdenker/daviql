@@ -1,10 +1,11 @@
+%h4.card-header
+  = fa_icon "table"
+  = query.name
+  %span.pull-right
+    \#
+    = query.id
 .card-block
-  %h4.card-title
-    = fa_icon "table"
-    = query.name
-    %span.pull-right
-      \#
-      = query.id
   %p.card-text
     = truncate(query.description, :length => 20  )
+.card-footer
   %a.btn.btn-primary{:href => url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id)} Show data

@@ -2,15 +2,14 @@ body{
   padding-top: 100px;
   .start{
     .card{
-      min-height: 250px;
+      height: 250px;
     }
-    #card_list{
-      ul{
-        list-style: none;
-        padding: 0px;
-        li{
-        }
-      }
+    .card-footer{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      text-align: center;
     }
   }
   .back_button{

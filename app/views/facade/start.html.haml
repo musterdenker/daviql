@@ -8,26 +8,28 @@
               Hello Daviql
             %p
               Just some text
-    %ul.list.row
-      - @dashboards.each do |dashboard|
-        %li.col-md-4
-          .card
-            .card-block
-              %h4.card-title
+    .row
+      .list
+        - @dashboards.each do |dashboard|
+          .col-md-4
+            .card
+              %h4.card-header
                 = fa_icon "dashboard"
                 = dashboard.name
                 %span.pull-right
                   \#
                   = dashboard.id
-              %p.card-text
-                = truncate(dashboard.description, :length => 20  )
-              %a.btn.btn-primary{:href => "#{dashboard_path(dashboard)}"} Show dashboard
-      - @queries.each do |q|
-        %li.col-md-4
-          .card.query
-            = render_card(q)
+              .card-block
+                %p.card-text
+                  = truncate(dashboard.description, :length => 20  )
+              .card-footer
+                %a.btn.btn-primary{:href => "#{dashboard_path(dashboard)}"} Show dashboard
+        - @queries.each do |q|
+          .col-md-4
+            .card.query
+              = render_card(q)
 :javascript
     $(document).ready( function() {
-      var options={valueNames:['card-title', 'card-text']};
+      var options={valueNames:['card-header', 'card-text']};
       var cardlist = new List('card_list', options);
     } );
