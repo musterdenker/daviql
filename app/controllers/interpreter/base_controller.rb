@@ -9,8 +9,12 @@ class Interpreter::BaseController < ApplicationController
 
 		respond_to do |format|
       format.html {
-        @data_to_present = (@query.presenter).constantize.new(@query, @data, @layout)
-        render "interpreter/show"
+        if enough_rights?
+          @data_to_present = (@query.presenter).constantize.new(@query, @data, @layout)
+          render "interpreter/show"
+        else
+          redirect_to root_path
+        end
       }
       format.csv {
         csv = CSV.generate do |csv|
@@ -31,6 +35,10 @@ class Interpreter::BaseController < ApplicationController
 	end
 
 	protected
+
+  def enough_rights?
+    get_query.users.where("id = #{current_user.id}").count > 0
+  end
 
 	def get_layout
 		layout = {
@@ -58,7 +66,7 @@ class Interpreter::BaseController < ApplicationController
 	end
 
 	def get_query
-		q = Query.find_restricted params[:id], current_user.id
+		q = Query.find params[:id] #, current_user.id
 		if q.nil?
 			#refcator, not working with ajax
 			redirect_to :root
