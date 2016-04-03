@@ -5,11 +5,13 @@
       %a.nav-link{:href => "/"}
         Home
         %span.sr-only (current)
-    .pull-xs-right
-      - if current_user
-        = image_tag(image_or_placeholder(current_user.image), height: 36, weight: 36)
-        = name_or_email(current_user)
-        = link_to('Logout', destroy_user_session_path, :method => :delete)
     - if is_admin?
       %li.nav-item
         = link_to "Admin", "/admin" , class: "nav-link"
+    .pull-xs-right
+      - if current_user
+        %li.nav-item
+          = image_tag(image_or_placeholder(current_user.image), height: 36, weight: 36)
+          = name_or_email(current_user)
+      %li.nav-item
+        = link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn-sm btn btn-danger-outline')
