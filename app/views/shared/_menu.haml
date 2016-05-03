@@ -1,10 +1,7 @@
 .navbar.navbar-light.bg-faded.navbar-static-top
-  %a.navbar-brand{:href => "#"} Daviql
+  %a.navbar-brand{:href => "/"} Daviql
   %ul.nav.navbar-nav
     %li.nav-item.active
-      %a.nav-link{:href => "/"}
-        Home
-        %span.sr-only (current)
     - if is_admin?
       %li.nav-item
         = link_to "Admin", "/admin" , class: "nav-link"
