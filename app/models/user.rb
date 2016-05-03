@@ -6,8 +6,6 @@ class User < ApplicationRecord
 
 	has_and_belongs_to_many :queries
 
-#	attr_accessible :query_ids
-
 if Rails.env.production?
   devise :database_authenticatable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
 else
