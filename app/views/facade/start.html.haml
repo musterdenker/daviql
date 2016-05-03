@@ -3,11 +3,14 @@
     %fieldset.form-group
       %input.form-control.form-control-lg.search{:placeholder => "Search", :type => "text"}
         - if @queries.empty? && @dashboards.empty?
+          %br
           .jumbotron
             %h1
-              Hello Daviql
+              Daviql says "Hello"
             %p
-              Just some text
+              It seems that you do not have access to any reports.
+              %br
+              So please ask your local administrator for access and don't foget to bring a coffee ;)
     .row
       .list
         - @dashboards.each do |dashboard|
