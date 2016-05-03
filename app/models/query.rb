@@ -1,5 +1,6 @@
 class Query < ApplicationRecord
   require "redis"
+  has_paper_trail
 
   belongs_to :data_source
 

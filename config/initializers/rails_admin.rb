@@ -96,8 +96,6 @@ RailsAdmin.config do |config|
   #     # using `field` instead of `configure` will exclude all other fields and force the ordering
   # end
 
-
-
   config.model 'User' do
     object_label_method do
       :custom_label_method
@@ -125,6 +123,8 @@ RailsAdmin.config do |config|
       field :users
     end
   end
+
+  config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
 
   def custom_label_method
     self.email

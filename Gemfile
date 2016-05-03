@@ -47,6 +47,7 @@ gem "font-awesome-rails"
 gem "google_visualr", ">= 2.1"
 
 gem 'codemirror-rails'
+gem 'paper_trail'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
