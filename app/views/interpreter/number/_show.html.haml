@@ -1,9 +1,8 @@
-- @data.each do |element|
-  .col-lg-3.col-md-6
-    .card.card-inverse.card-info
-      .card-block.bg-info
-        %h6.text-uppercase
-          = element['label']
-        %h1.display-3
-          = element['number']
-.clearfix
+%div{style: conditional_width(@layout)}
+  .card.card-inverse.card-info
+    .card-block.bg-info
+      %h6.text-uppercase
+        = @data_to_present.data['label']
+      %h1.display-3
+        = @data_to_present.data['number']
+}

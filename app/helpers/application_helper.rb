@@ -26,4 +26,12 @@ module ApplicationHelper
     name_or_email
   end
 
+  def conditional_width layout
+    if layout[:width].to_i > 0
+      "width: #{layout[:width]}px"
+    else
+      ""
+    end
+  end
+
 end
