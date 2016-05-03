@@ -13,5 +13,5 @@
         %li.nav-item
           = image_tag(image_or_placeholder(current_user.image), height: 36, weight: 36)
           = name_or_email(current_user)
-      %li.nav-item
-        = link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn-sm btn btn-danger-outline')
+        %li.nav-item
+          = link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn-sm btn btn-danger-outline')
