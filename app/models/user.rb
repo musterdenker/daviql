@@ -9,9 +9,9 @@ class User < ApplicationRecord
 #	attr_accessible :query_ids
 
 if Rails.env.production?
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
+  devise :database_authenticatable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
 else
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable, :omniauthable, omniauth_providers: [:google_oauth2]
+  devise :database_authenticatable, :rememberable, :trackable, :validatable, :registerable, :omniauthable, omniauth_providers: [:google_oauth2]
 end
 
   # Setup accessible (or protected) attributes for your model
