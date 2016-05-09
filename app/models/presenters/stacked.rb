@@ -5,9 +5,11 @@ module Presenters
       return @dataset unless @dataset.nil?
       @dataset = {}
       labels.each do |label|
-        @data.select{|e| e['label'] == label}.each do |element|
-          @dataset[element['element']] = [] if @dataset[element['element']].nil?
-          @dataset[element['element']] << element['val']
+        @data.select{|e| e['label'] == label}.each do |elements|
+          elements.select{|k,v| k != 'label'}.each do |key,value|
+            @dataset[key] = [] if @dataset[key].nil?
+            @dataset[key] << value
+          end
         end
       end
       @dataset

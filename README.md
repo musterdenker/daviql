@@ -78,10 +78,8 @@ Column names will directly be translated to the column headers of the table.
 
 Stacked
 -------
-    select "Bar1" as label,"elemt1" as element, 12 as val
+    select '2015-05-05' as group_column, 12 as custom_name1, 13 as custom_name2
     union
-    select "Bar1" as label,"element2" as element, 13 as val
-    union
-    select "Bar2" as label,"element1" as element, 8 as val
-    union
-    select "Bar2" as label,"element1" as element, 10 as val
+    select '2016-05-05' as group_column, 22 as custom_name1, 23 as custom_name2
+
+The columns custom_name1, ...2, etc are custom and the name is variable as well as the number of columns
