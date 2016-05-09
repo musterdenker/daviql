@@ -1,11 +1,11 @@
-.container-fluid
+.container-fluid.dashboard
   .row-fluid
     %h1= @dashboard.name
-    %br
     %p.lead
       = @dashboard.description
   -@dashboard.queries.each do |query|
-    .row-fluid.pull-xs-left{id:"query-#{query.id}"}
+    .row-fluid.pull-xs-left
+      .content{id:"query-#{query.id}"}
 
 
   -@dashboard.dashboard_elements.each do |dashboard_element|
