@@ -1,9 +1,3 @@
-%h4.card-header
-  = fa_icon "pie-chart"
-  = query.name
-  %span.pull-right
-    \#
-    = query.id
 .card-block
   %p.card-text
     = truncate(query.description, :length => 120  )

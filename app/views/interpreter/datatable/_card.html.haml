@@ -4,9 +4,4 @@
   %span.pull-right
     \#
     = query.id
-.card-block
-  %p.card-text
-    = truncate(query.description, :length => 20  )
-.card-footer
-  %a.btn.btn-primary{:href => url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id)} Show data
-  %a.btn.btn-secondary{:href => url_for(:action => 'show', :controller => "interpreter/#{query.interpreter}", :id => query.id, format: 'csv')} Download data
+= render 'interpreter/card_block', query: query

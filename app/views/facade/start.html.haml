@@ -24,7 +24,7 @@
                   = dashboard.id
               .card-block
                 %p.card-text
-                  = truncate(dashboard.description, :length => 20  )
+                  = truncate(dashboard.description, :length => 120  )
               .card-footer
                 %a.btn.btn-primary{:href => "#{dashboard_path(dashboard)}"} Show dashboard
         - @queries.each do |q|
