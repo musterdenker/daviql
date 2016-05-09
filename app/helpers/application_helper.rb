@@ -10,8 +10,8 @@ module ApplicationHelper
 
   def inline_dimension layout
     res = ""
-    res << "width: #{layout[:width]}px;" unless layout[:width].blank?
-    res << "height: #{layout[:height]}px;" unless layout[:height].blank?
+    res << "width: #{layout[:width]}px;" unless layout[:width].blank? || layout[:width] == 0
+    res << "height: #{layout[:height]}px;" unless layout[:height].blank? || layout[:height] == 0
   end
 
   def image_or_placeholder(image_url)
