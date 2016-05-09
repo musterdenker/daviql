@@ -35,6 +35,46 @@ Query Syntax for Interpreters
 
 > - Whenever possible / neccassary named attributes are used
 
+Number
+-------
+    select 3210 as number, "Foobar" as label
+
+Sankey
+------
+    select "A" as origin, "B" as destination, 10 as number
+    union
+    select "A"as origin, "C"as destination, 15 as number
+    union
+    select "B"as origin, "C"as destination, 5 as number
+    union
+    select "C"as origin, "D"as destination, 2 as number
+
+
+Gauge
+------
+    select 12 as value, 100 as max, 1 as min
+
+
+Pie
+------
+    select "foo" as label, 12 as number
+    union
+    select "bar" as label, 21 as number
+
+Graph
+------
+    select '2015-05-05' as group_column, 12 as custom_name1, 13 as custom_name2
+    union
+    select '2016-05-05' as group_column, 22 as custom_name1, 23 as custom_name2
+
+The columns custom_name1, ...2, etc are custom and the name is variable as well as the number of columns
+
+
+Table
+-------
+    select 1 as foo, 2 as bar, "test" as something
+Column names will directly be translated to the column headers of the table.
+
 
 Stacked
 -------
