@@ -1,0 +1,35 @@
+%div{style: inline_dimension(@layout)}
+  %canvas{id:"barchart-#{@query.id}"}
+
+  :javascript
+    var ctx = $("#barchart-#{@query.id}");
+    var data = {
+        labels: ['#{@data_to_present.labels.join("','")}'],
+        datasets: [
+          #{@data_to_present.datasets_string}
+        ]
+    };
+    var options = {
+      responsive: true,
+      title:{
+          display:true,
+          text:"#{@query.name}"
+      },
+      tooltips: {
+          mode: 'label'
+      },
+      responsive: true,
+      scales: {
+          xAxes: [{
+              stacked: true,
+          }],
+          yAxes: [{
+              stacked: true
+          }]
+      }
+    };
+    var myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: options
+    });

@@ -29,7 +29,19 @@ Please set the following ENV Variables
 
 
 
-Todos:
+Query Syntax for Interpreters
 ======
+> **Note:**
 
- * Adding some NoSql storages
+> - Whenever possible / neccassary named attributes are used
+
+
+Stacked
+-------
+    select "Bar1" as label,"elemt1" as element, 12 as val
+    union
+    select "Bar1" as label,"element2" as element, 13 as val
+    union
+    select "Bar2" as label,"element1" as element, 8 as val
+    union
+    select "Bar2" as label,"element1" as element, 10 as val
