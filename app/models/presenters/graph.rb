@@ -4,9 +4,7 @@ module Presenters
     def data
       data_table = GoogleVisualr::DataTable.new
 
-      xaxis = @data.first['group_column']
-
-      data_table.new_column('string', xaxis)
+      data_table.new_column('string', "")
 
       values = []
       @data.first.to_a[1..-1].each do |element|
@@ -16,10 +14,11 @@ module Presenters
 
       @data.each do |d|
         a = []
-        a << d[xaxis]
+        a << d['group_column']
         values.each do |key|
           a << d[key].to_f
         end
+
         data_table.add_row a
       end
 
