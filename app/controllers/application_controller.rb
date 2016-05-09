@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :is_admin?, :current_user
 
+  before_filter :set_paper_trail_whodunnit
+
   def basic_auth
 
     if Rails.application.config.use_basic_auth
