@@ -26,6 +26,13 @@ module ApplicationHelper
     name_or_email
   end
 
+  def bar_canvas query, layout
+    tag = "<canvas id='barchart-#{@query.id}'"
+    tag = "#{tag} width=#{@layout[:width]}" unless layout[:width].blank? || layout[:width] == 0
+    tag = "#{tag} height=#{@layout[:height]}" unless layout[:height].blank? || layout[:height] == 0
+    "#{tag}/>"
+  end
+
   def conditional_width layout
     if layout[:width].to_i > 0
       "width: #{layout[:width]}px"

@@ -1,6 +1,5 @@
 %div{style: inline_dimension(@layout)}
-  %canvas{id:"barchart-#{@query.id}"}
-
+  = raw bar_canvas(@query, @layout)
   :javascript
     var ctx = $("#barchart-#{@query.id}");
     var data = {
