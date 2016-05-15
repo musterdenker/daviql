@@ -9,6 +9,8 @@ class Query < ApplicationRecord
   has_many :dashboard_elements
   has_many :dashboards, through: :dashboard_elements
 
+  has_many :dynamic_fields
+
   has_secure_token :auth_token
 
   def self.find_restricted id, user_id
@@ -23,7 +25,7 @@ class Query < ApplicationRecord
     ['datatable', 'graph', 'csv', 'gauge', 'pie', 'sankey', 'number', 'stacked']
   end
 
-  def get_data
+  def get_data filters = nil
     if async
       redis = Redis.new
       value = redis.get("query#{id}")
@@ -32,12 +34,20 @@ class Query < ApplicationRecord
         value["data"]
       end
     else
-      execute
+      execute filters
     end
   end
 
-  def execute
-  	data_source.fetch(self.body).to_a
+  def execute filters = nil
+    q = self.body
+    dynamic_fields.each do |field|
+      if filters && filters[field.key]
+        q = q.gsub(field.key, filters[field.key])
+      else
+        q = q.gsub(field.key, "''")
+      end
+    end
+  	data_source.fetch(q).to_a
   end
 
   def presenter

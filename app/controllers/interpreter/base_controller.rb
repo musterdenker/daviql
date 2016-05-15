@@ -5,7 +5,9 @@ class Interpreter::BaseController < ApplicationController
 
 		@layout = get_layout
 
-		@data = @query.get_data
+    @dynamic_fields = params[:dynamic_fields]
+
+		@data = @query.get_data @dynamic_fields
 
 		respond_to do |format|
       format.html {
@@ -56,12 +58,12 @@ class Interpreter::BaseController < ApplicationController
 	end
 
 	def send_csv data
-	  	csv = CSV.generate do |csv|
-		    csv << data.first.to_a.map(&:first)
-		    data.each do |e|
-		      csv << e.values
-		   	 end
-		  end
+  	csv = CSV.generate do |csv|
+	    csv << data.first.to_a.map(&:first)
+	    data.each do |e|
+	      csv << e.values
+	   	 end
+	  end
 		send_data csv
 	end
 
