@@ -18,11 +18,13 @@
 
 
 
+
 :javascript
   var asInitVals = new Array();
   $(document).ready(function() {
     var oTable = $('#table-#{@query.id}').dataTable({
       "scrollX": true,
+      "order": [],
      "drawCallback": function( settings ) {
        $(".dataTables_wrapper").css("width","#{@layout[:width]}px");
      }
