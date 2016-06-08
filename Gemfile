@@ -16,6 +16,7 @@ gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap'
 gem 'rails-assets-tether'
+gem "font-awesome-rails"
 
 gem 'haml'
 # Gems used only for assets and not required
