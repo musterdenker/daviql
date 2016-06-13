@@ -6,6 +6,7 @@
   $(document).ready(function() {
     var g = new JustGage({
       id: "gauge-#{@query.id}",
+      decimals: true,
       value: #{@data_to_present.data['value']},
       min: #{@data_to_present.data['min']},
       max: #{@data_to_present.data['max']},
