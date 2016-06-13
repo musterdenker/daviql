@@ -7,6 +7,14 @@ GIT
       rack (>= 1.1)
 
 GIT
+  remote: git://github.com/amatsuda/kaminari.git
+  revision: 42c95e083d18b32923ceb28b64d4d9973eb7d5ac
+  specs:
+    kaminari (1.0.0.alpha)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+
+GIT
   remote: git://github.com/mshibuya/remotipart.git
   revision: 3a6acb36d46d6769faba6bd94ed7f831321f6c6a
   specs:
@@ -172,9 +180,6 @@ GEM
       railties (>= 3.2.16)
     json (1.8.3)
     jwt (1.5.1)
-    kaminari (0.16.3)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     kgio (2.10.0)
     less (2.6.0)
       commonjs (~> 0.2.7)
@@ -361,6 +366,7 @@ DEPENDENCIES
   haml
   jquery-datatables-rails
   jquery-rails
+  kaminari!
   less-rails
   meta_request
   mysql2

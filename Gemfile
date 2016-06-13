@@ -95,4 +95,6 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-oauth2', '= 1.3.1'
 gem 'certified'
 
+gem "kaminari", github: "amatsuda/kaminari"
+
 #gem 'protected_attributes'
