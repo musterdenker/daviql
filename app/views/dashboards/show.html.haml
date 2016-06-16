@@ -5,6 +5,8 @@
       = @dashboard.description
   -@dashboard.queries.each do |query|
     .row-fluid.pull-xs-left
+      %h2
+        =query.name
       .content{id:"query-#{query.id}"}
 
 
