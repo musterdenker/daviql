@@ -13,7 +13,10 @@
 
 ActiveRecord::Schema.define(version: 20160503223632) do
 
-  create_table "dashboard_elements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "dashboard_elements", force: :cascade do |t|
     t.integer "dashboard_id"
     t.integer "query_id"
     t.integer "position"
@@ -23,14 +26,14 @@ ActiveRecord::Schema.define(version: 20160503223632) do
     t.index ["query_id"], name: "index_dashboard_elements_on_query_id", using: :btree
   end
 
-  create_table "dashboards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "dashboards", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.text     "description", limit: 65535
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
   end
 
-  create_table "dashboards_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "dashboards_users", id: false, force: :cascade do |t|
     t.integer "dashboard_id"
     t.integer "user_id"
     t.index ["dashboard_id", "user_id"], name: "index_dashboards_users_on_dashboard_id_and_user_id", using: :btree
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 20160503223632) do
     t.index ["user_id"], name: "index_dashboards_users_on_user_id", using: :btree
   end
 
-  create_table "data_sources", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "data_sources", force: :cascade do |t|
     t.string   "name"
     t.string   "database_type"
     t.string   "host"
@@ -47,56 +50,46 @@ ActiveRecord::Schema.define(version: 20160503223632) do
     t.string   "user"
     t.string   "password"
     t.string   "database_name"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "queries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "queries", force: :cascade do |t|
     t.string   "name"
-    t.text     "body",             limit: 65535
+    t.text     "body"
     t.string   "interpreter"
     t.integer  "data_source_id"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
-    t.text     "description",      limit: 65535
-    t.string   "context",                        default: ""
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "description"
+    t.string   "context",          default: ""
     t.string   "auth_token"
     t.integer  "width"
     t.integer  "height"
-    t.boolean  "async",                          default: false
+    t.boolean  "async",            default: false
     t.datetime "async_updated_at"
   end
 
-  create_table "queries_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "queries_users", id: false, force: :cascade do |t|
     t.integer "query_id"
     t.integer "user_id"
     t.index ["query_id", "user_id"], name: "index_queries_users_on_query_id_and_user_id", using: :btree
     t.index ["user_id", "query_id"], name: "index_queries_users_on_user_id_and_query_id", using: :btree
   end
 
-  create_table "rails_admin_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "message",    limit: 65535
+  create_table "rails_admin_histories", force: :cascade do |t|
+    t.text     "message"
     t.string   "username"
     t.integer  "item"
     t.string   "table"
     t.integer  "month",      limit: 2
-    t.integer  "year",       limit: 8
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.bigint   "year"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
   end
 
-  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.integer  "resource_id"
-    t.string   "resource_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
-    t.index ["name"], name: "index_roles_on_name", using: :btree
-  end
-
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
@@ -107,8 +100,8 @@ ActiveRecord::Schema.define(version: 20160503223632) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "is_admin",               default: false
     t.string   "uid"
     t.string   "provider"
@@ -120,13 +113,7 @@ ActiveRecord::Schema.define(version: 20160503223632) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "users_roles", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "user_id"
-    t.integer "role_id"
-    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
-  end
-
-  create_table "version_associations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "version_associations", force: :cascade do |t|
     t.integer "version_id"
     t.string  "foreign_key_name", null: false
     t.integer "foreign_key_id"
@@ -134,16 +121,16 @@ ActiveRecord::Schema.define(version: 20160503223632) do
     t.index ["version_id"], name: "index_version_associations_on_version_id", using: :btree
   end
 
-  create_table "versions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
-    t.string   "item_type",                         null: false
-    t.integer  "item_id",                           null: false
-    t.string   "event",                             null: false
+  create_table "versions", force: :cascade do |t|
+    t.string   "item_type",      null: false
+    t.integer  "item_id",        null: false
+    t.string   "event",          null: false
     t.string   "whodunnit"
-    t.text     "object",         limit: 4294967295
+    t.text     "object"
     t.datetime "created_at"
     t.integer  "transaction_id"
-    t.text     "object_changes", limit: 4294967295
-    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", length: {"item_type"=>191, "item_id"=>nil}, using: :btree
+    t.text     "object_changes"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
     t.index ["transaction_id"], name: "index_versions_on_transaction_id", using: :btree
   end
 

@@ -30,8 +30,8 @@ module Presenters
       case @query.data_source.database_type
         when 'postgresql'
           values = []
-          @data.values.each do |v|
-            values << [v[0], v[1].to_i]
+          @data.each do |val|
+            values << [val['label'], val['number']]
           end
           values
         when 'mysql'
