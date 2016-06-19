@@ -69,6 +69,14 @@ Graph
 
 The columns custom_name1, ...2, etc are custom and the name is variable as well as the number of columns
 
+Area
+------
+    select '2015-05-05' as group_column, 12 as custom_name1, 13 as custom_name2
+    union
+    select '2016-05-05' as group_column, 22 as custom_name1, 23 as custom_name2
+
+The columns custom_name1, ...2, etc are custom and the name is variable as well as the number of columns
+
 
 Table
 -------

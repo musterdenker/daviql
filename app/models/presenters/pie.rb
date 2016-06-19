@@ -31,13 +31,13 @@ module Presenters
         when 'postgresql'
           values = []
           @data.each do |val|
-            values << [val['label'], val['number']]
+            values << [val['label'], val['number'].to_i]
           end
           values
         when 'mysql'
           values = []
           @data.each do |val|
-            values << [val['label'], val['number']]
+            values << [val['label'], val['number'].to_i]
           end
           values
       end
