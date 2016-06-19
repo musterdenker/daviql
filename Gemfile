@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'dotenv-rails', :require => 'dotenv/rails-now', :groups => [:development, :test]
+gem 'dotenv-rails', :require => 'dotenv/rails-now'
 gem 'rails', '5.0.0.rc1'
 
 
@@ -43,7 +43,6 @@ gem 'sidekiq-cron'
 
 gem 'bootstrap-wysihtml5-rails'
 gem 'jquery-datatables-rails'
-gem "font-awesome-rails"
 gem "google_visualr", ">= 2.1"
 
 gem 'codemirror-rails'
@@ -95,5 +94,7 @@ gem "devise", :git => 'https://github.com/plataformatec/devise'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-oauth2', '= 1.3.1'
 gem 'certified'
+
+gem "kaminari", github: "amatsuda/kaminari"
 
 #gem 'protected_attributes'
