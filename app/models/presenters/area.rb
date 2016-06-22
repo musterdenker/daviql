@@ -25,8 +25,8 @@ module Presenters
       options = {
           title: @query.name,
           legend: { position: 'bottom', textStyle: { :fontSize => 16} },
-          width: @layout[:width],
-          height: @layout[:height]
+          width: "100%",
+          height: "100%"
       }
 
       GoogleVisualr::Interactive::AreaChart.new(data_table, options)
