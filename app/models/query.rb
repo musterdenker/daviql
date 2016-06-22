@@ -20,7 +20,7 @@ class Query < ApplicationRecord
   end
 
   def interpreter_enum
-    ['datatable', 'graph', 'csv', 'gauge', 'pie', 'sankey', 'number', 'stacked']
+    ['area','datatable', 'graph', 'csv', 'gauge', 'pie', 'sankey', 'number', 'stacked']
   end
 
   def get_data

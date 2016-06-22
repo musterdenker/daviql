@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
         username == Rails.application.config.basic_auth_user && password == Rails.application.config.basic_auth_pw
       end
     end
-
   end
 
   def is_admin?

@@ -5,8 +5,8 @@ module Presenters
       return @dataset unless @dataset.nil?
       @dataset = {}
       labels.each do |label|
-        @data.select{|e| e['label'] == label}.each do |elements|
-          elements.select{|k,v| k != 'label'}.each do |key,value|
+        @data.select{|e| e['group_column'] == label}.each do |elements|
+          elements.select{|k,v| k != 'group_column'}.each do |key,value|
             @dataset[key] = [] if @dataset[key].nil?
             @dataset[key] << value
           end
@@ -16,7 +16,7 @@ module Presenters
     end
 
     def labels
-       @labels ||= @data.map{|e| e['label']}.uniq
+       @labels ||= @data.map{|e| e['group_column']}.uniq
     end
 
     def dataset_option_sring label, values
