@@ -1,4 +1,4 @@
-%div{id:"gauge-#{@query.id}", style: inline_dimension(@layout)}
+%div{id:"gauge-#{@query.id}"}
 
 
 :javascript
@@ -10,7 +10,8 @@
       value: #{@data_to_present.data['value']},
       min: #{@data_to_present.data['min']},
       max: #{@data_to_present.data['max']},
-      title: "#{@query.name}"
+      title: "#{@query.name}",
+      relativeGaugeSize: true
     });
   });
 

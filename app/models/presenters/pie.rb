@@ -13,11 +13,9 @@ module Presenters
       @layout[:height] = 500 if @layout[:height].blank?
 
       option = {
-          title: @query.name,
           legend: {position: 'right', textStyle: {:fontSize => 16}},
           material: false,
-          width: @layout[:width],
-          height: @layout[:height]
+          height: "500"
       }
       GoogleVisualr::Interactive::PieChart.new(data_table, option)
     end
