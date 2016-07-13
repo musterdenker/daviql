@@ -26,6 +26,9 @@ Please set the following ENV Variables
     GOOGLE_CLIENT_SECRET="GOOGLE_CLIENT_SECRET"
     GOOGLE_OAUTH_DOMAINS="example.com, beispiel.de"
     REDIS_URL="redis://127.0.0.1:6380/15"
+    APP_NAME="DaViQl"
+    LOGO_URL="http://example.com/logo.png"
+    FAVICON_URL="http://example.com/favicon.ico"
 
 
 

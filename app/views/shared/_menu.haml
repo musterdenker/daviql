@@ -1,5 +1,6 @@
 .navbar.navbar-light.bg-faded.navbar-static-top
-  %a.navbar-brand{:href => "/"} Daviql
+  %a.navbar-brand{:href => "/"}
+    = ENV['APP_NAME']
   %ul.nav.navbar-nav
     %li.nav-item.active
     - if is_admin?
