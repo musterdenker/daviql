@@ -41,4 +41,8 @@ module ApplicationHelper
     end
   end
 
+  def query_jump_options
+
+  end
+
 end

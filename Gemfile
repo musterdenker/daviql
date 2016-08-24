@@ -46,6 +46,7 @@ gem 'sidekiq-cron'
 gem 'bootstrap-wysihtml5-rails'
 gem 'jquery-datatables-rails'
 gem "google_visualr", ">= 2.1"
+gem "select2-rails"
 
 gem 'codemirror-rails'
 gem 'paper_trail'

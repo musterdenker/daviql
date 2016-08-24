@@ -3,10 +3,11 @@
     = ENV['APP_NAME']
   %ul.nav.navbar-nav
     %li.nav-item.active
-    - if is_admin?
-      %li.nav-item
-        = link_to "Admin", "/admin" , class: "nav-link"
+
     .pull-xs-right
+      - if is_admin?
+        %li.nav-item
+          = link_to "Admin", "/admin" , class: "nav-link"
       - if current_user
         %li.nav-item
           = image_tag(image_or_placeholder(current_user.image), height: 36, weight: 36)

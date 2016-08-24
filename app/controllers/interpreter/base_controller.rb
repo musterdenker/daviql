@@ -1,13 +1,13 @@
 class Interpreter::BaseController < ApplicationController
 
-	def show
-		@query = get_query
+  def show
+    @query = get_query
 
-		@layout = get_layout
+    @layout = get_layout
 
-		@data = @query.get_data
+    @data = @query.get_data
 
-		respond_to do |format|
+    respond_to do |format|
       format.html {
         if enough_rights?
           @data_to_present = (@query.presenter).constantize.new(@query, @data, @layout)
@@ -30,48 +30,44 @@ class Interpreter::BaseController < ApplicationController
         render  "interpreter/show"
       }
 
-		end
+    end
 
-	end
+  end
 
-	protected
+  protected
 
   def enough_rights?
     get_query.users.where("id = #{current_user.id}").count > 0
   end
 
-	def get_layout
-		layout = {
-			width: @query.width,
-			height: @query.height
-		}
-		if params[:width]
-			layout[:width] = params[:width]
-		end
+  def get_layout
+    layout = {
+      width: @query.width,
+      height: @query.height
+    }
 
-		if params[:height]
-			layout[:height] = params[:height]
-		end
-		layout
-	end
+    layout[:width] = params[:width] if params[:width]
+    layout[:height] = params[:height] if params[:height]
 
-	def send_csv data
-	  	csv = CSV.generate do |csv|
-		    csv << data.first.to_a.map(&:first)
-		    data.each do |e|
-		      csv << e.values
-		   	 end
-		  end
-		send_data csv
-	end
+    layout
+  end
 
-	def get_query
-		q = Query.find params[:id] #, current_user.id
-		if q.nil?
-			#refcator, not working with ajax
-			redirect_to :root
-		end
-		q
-	end
+  def send_csv(data)
+    csv = CSV.generate do |gen_csv|
+      gen_csv << data.first.to_a.map(&:first)
+      data.each do |e|
+        gen_csv << e.values
+      end
+    end
+    send_data csv
+  end
 
+  def get_query
+    q = Query.find params[:id] # , current_user.id
+    if q.nil?
+      # refcator, not working with ajax
+      redirect_to :root
+    end
+    q
+  end
 end

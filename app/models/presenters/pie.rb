@@ -13,9 +13,9 @@ module Presenters
       @layout[:height] = 500 if @layout[:height].blank?
 
       option = {
-          legend: {position: 'right', textStyle: {:fontSize => 16}},
-          material: false,
-          height: "500"
+        legend: { position: 'right', textStyle: { :fontSize => 16 } },
+        material: false,
+        height: "500"
       }
       GoogleVisualr::Interactive::PieChart.new(data_table, option)
     end
@@ -26,18 +26,18 @@ module Presenters
 
     def get_data_rows
       case @query.data_source.database_type
-        when 'postgresql'
-          values = []
-          @data.each do |val|
-            values << [val['label'], val['number'].to_i]
-          end
-          values
-        when 'mysql'
-          values = []
-          @data.each do |val|
-            values << [val['label'], val['number'].to_i]
-          end
-          values
+      when 'postgresql'
+        values = []
+        @data.each do |val|
+          values << [val['label'], val['number'].to_i]
+        end
+        values
+      when 'mysql'
+        values = []
+        @data.each do |val|
+          values << [val['label'], val['number'].to_i]
+        end
+        values
       end
     end
 
