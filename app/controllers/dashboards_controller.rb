@@ -7,5 +7,4 @@ class DashboardsController < ApplicationController
 
   protected
 
-
 end

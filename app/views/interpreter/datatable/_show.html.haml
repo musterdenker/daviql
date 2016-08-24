@@ -1,4 +1,4 @@
-%table.table.table-striped.table-bordered{:cellspacing => "0", :width => "100%", :id => "table-#{@query.id}"}
+%table.table.table-striped.table-bordered{:cellspacing => "0", :id => "table-#{@query.id}"}
   %thead
     %tr
       - @data_to_present.data.first.each do |k,v|
@@ -18,13 +18,15 @@
 
 
 
+
 :javascript
   var asInitVals = new Array();
   $(document).ready(function() {
     var oTable = $('#table-#{@query.id}').dataTable({
-      "scrollX": true,
+     "scrollX": true,
+      "order": [],
      "drawCallback": function( settings ) {
-       $(".dataTables_wrapper").css("width","#{@layout[:width]}px");
+
      }
     });
 

@@ -1,5 +1,5 @@
 module Presenters
-  class Graph < Base
+  class Area < Base
 
     def data
       data_table = GoogleVisualr::DataTable.new
@@ -23,14 +23,13 @@ module Presenters
       end
 
       options = {
-          title: @query.name,
-          legend: { position: 'bottom', textStyle: { :fontSize => 16} },
-          material: true,
-          width: "100%",
-          height: "100%"
+        title: @query.name,
+        legend: { position: 'bottom', textStyle: { :fontSize => 16} },
+        width: "100%",
+        height: "100%"
       }
 
-      GoogleVisualr::Interactive::ColumnChart.new(data_table, options)
+      GoogleVisualr::Interactive::AreaChart.new(data_table, options)
     end
 
   end

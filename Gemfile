@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-gem 'dotenv-rails', :require => 'dotenv/rails-now', :groups => [:development, :test]
-gem 'rails', '5.0.0.beta2'
+gem 'dotenv-rails', :require => 'dotenv/rails-now'
+gem 'rails', '5.0.0.rc1'
 
 
 # Bundle edge Rails instead:
@@ -18,6 +18,8 @@ gem 'bootstrap'
 gem 'rails-assets-tether'
 
 gem 'haml'
+
+gem 'nokogiri', '1.6.7'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -43,8 +45,8 @@ gem 'sidekiq-cron'
 
 gem 'bootstrap-wysihtml5-rails'
 gem 'jquery-datatables-rails'
-gem "font-awesome-rails"
 gem "google_visualr", ">= 2.1"
+gem "select2-rails"
 
 gem 'codemirror-rails'
 gem 'paper_trail'
@@ -87,13 +89,15 @@ end
 # gem 'debugger'
 
 #no stable support for rails 5 yet
-
 gem "rack-pjax", :github => "afcapel/rack-pjax"
 gem "remotipart", :github => "mshibuya/remotipart"
-gem 'rails_admin' , git: 'https://github.com/sferik/rails_admin'
+gem 'rails_admin', github: 'musterdenker/rails_admin', branch: 'master'
+gem 'rails_admin_history_rollback', github: 'musterdenker/rails_admin_history_rollback', branch: 'rails5'
 gem "devise", :git => 'https://github.com/plataformatec/devise'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-oauth2', '= 1.3.1'
 gem 'certified'
+
+gem "kaminari", github: "amatsuda/kaminari"
 
 #gem 'protected_attributes'

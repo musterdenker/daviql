@@ -26,6 +26,9 @@ Please set the following ENV Variables
     GOOGLE_CLIENT_SECRET="GOOGLE_CLIENT_SECRET"
     GOOGLE_OAUTH_DOMAINS="example.com, beispiel.de"
     REDIS_URL="redis://127.0.0.1:6380/15"
+    APP_NAME="DaViQl"
+    LOGO_URL="http://example.com/logo.png"
+    FAVICON_URL="http://example.com/favicon.ico"
 
 
 
@@ -62,6 +65,14 @@ Pie
     select "bar" as label, 21 as number
 
 Graph
+------
+    select '2015-05-05' as group_column, 12 as custom_name1, 13 as custom_name2
+    union
+    select '2016-05-05' as group_column, 22 as custom_name1, 23 as custom_name2
+
+The columns custom_name1, ...2, etc are custom and the name is variable as well as the number of columns
+
+Area
 ------
     select '2015-05-05' as group_column, 12 as custom_name1, 13 as custom_name2
     union

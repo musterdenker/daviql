@@ -3,9 +3,8 @@
     %h1= @dashboard.name
     %p.lead
       = @dashboard.description
-  -@dashboard.queries.each do |query|
-    .row-fluid.pull-xs-left
-      .content{id:"query-#{query.id}"}
+  -@dashboard.dashboard_elements.each do |dashboard_element|
+    = render partial: "interpreter/#{dashboard_element.query.interpreter}/dashboard_element", locals: {dashboard_element: dashboard_element}
 
 
   -@dashboard.dashboard_elements.each do |dashboard_element|

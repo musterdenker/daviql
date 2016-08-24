@@ -26,4 +26,5 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables.bootstrap4.min
 //= require dataTables/extras/dataTables.tableTools
+//= require select2
 //= require_tree .

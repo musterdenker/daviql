@@ -35,10 +35,14 @@ module ApplicationHelper
 
   def conditional_width layout
     if layout[:width].to_i > 0
-      "width: #{layout[:width]}px"
+      "width: 100%"
     else
       ""
     end
+  end
+
+  def query_jump_options
+
   end
 
 end
