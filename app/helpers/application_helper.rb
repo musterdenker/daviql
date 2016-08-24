@@ -42,7 +42,15 @@ module ApplicationHelper
   end
 
   def query_jump_options
-
+    queries = Query.joins(:users).where("users.id = #{current_user.id}").order(:context)
+    grouped_queries = {}
+    queries.each do |query|
+      context = query.context
+      context = "No Context" if context.blank?
+      grouped_queries[context] = {} unless grouped_queries.include? context
+      grouped_queries[context][query.name] = query.id
+    end
+    grouped_queries
   end
 
 end
