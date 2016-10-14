@@ -2,7 +2,9 @@
   %a.navbar-brand{:href => "/"}
     = ENV['APP_NAME']
   %ul.nav.navbar-nav
-    %li.nav-item.active
+    %li.nav-item
+      = form_tag(queries_path, :method => 'post') do
+        = select_tag(:query_id, grouped_options_for_select(query_jump_options), prompt: "Quickjump", class: "select2", onchange: "this.form.submit();")
 
     .pull-xs-right
       - if is_admin?

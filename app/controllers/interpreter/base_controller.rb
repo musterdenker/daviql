@@ -29,9 +29,7 @@ class Interpreter::BaseController < ApplicationController
         @data_to_present = @query.presenter.constantize.new(@query, @data, @layout)
         render  "interpreter/show"
       }
-
     end
-
   end
 
   protected
