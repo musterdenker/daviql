@@ -42,7 +42,6 @@ gem 'sinatra', github: 'sinatra'
 gem 'sidekiq'
 gem 'sidekiq-cron'
 
-
 gem 'bootstrap-wysihtml5-rails'
 gem 'jquery-datatables-rails'
 gem "google_visualr", ">= 2.1"

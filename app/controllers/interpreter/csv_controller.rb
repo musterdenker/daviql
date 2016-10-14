@@ -9,6 +9,5 @@ class Interpreter::CsvController < Interpreter::BaseController
         send_csv @data
       }
     end
-
   end
 end

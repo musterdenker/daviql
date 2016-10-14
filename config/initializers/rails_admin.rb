@@ -116,11 +116,13 @@ RailsAdmin.config do |config|
       field :height
       field :context
       field :description
+      field :query_variables
       field :body do
         partial "sql_partial"
       end
       field :data_source
       field :users
+
     end
   end
 
@@ -129,6 +131,5 @@ RailsAdmin.config do |config|
   def custom_label_method
     self.email
   end
-
 
 end

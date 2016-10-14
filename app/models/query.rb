@@ -11,11 +11,14 @@ class Query < ApplicationRecord
 
   has_secure_token :auth_token
 
+  has_many :query_variables
+  has_many :variables, through: :query_variables
+
   def self.find_restricted id, user_id
-  	r = self.joins(:users).where("users.id = #{user_id} and queries.id = #{id}").first
-  	if r.nil?
-  		raise ActionController::RoutingError.new('Not Found')
-  	end
+    r = self.joins(:users).where("users.id = #{user_id} and queries.id = #{id}").first
+    if r.nil?
+      raise ActionController::RoutingError.new('Not Found')
+    end
     r
   end
 
@@ -37,12 +40,11 @@ class Query < ApplicationRecord
   end
 
   def execute
-  	data_source.fetch(self.body).to_a
+    data_source.fetch(self.body).to_a
   end
 
   def presenter
     "Presenters::#{interpreter.titleize}"
   end
-
 
 end

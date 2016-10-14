@@ -48,6 +48,11 @@ module Daviql
     # like if you have constraints or database-specific column types
     # config.active_record.schema_format = :sql
 
+    config.generators do |g|
+      g.test_framework :rspec
+      g.integration_tool :rspec
+    end
+
     # Enable the asset pipeline
     config.assets.enabled = true
 

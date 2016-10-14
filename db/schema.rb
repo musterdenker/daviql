@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160503223632) do
+ActiveRecord::Schema.define(version: 20160913162636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,16 @@ ActiveRecord::Schema.define(version: 20160503223632) do
     t.index ["user_id", "query_id"], name: "index_queries_users_on_user_id_and_query_id", using: :btree
   end
 
+  create_table "query_variables", force: :cascade do |t|
+    t.integer  "queries_id"
+    t.integer  "variables_id"
+    t.string   "default_value"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["queries_id"], name: "index_query_variables_on_queries_id", using: :btree
+    t.index ["variables_id"], name: "index_query_variables_on_variables_id", using: :btree
+  end
+
   create_table "rails_admin_histories", force: :cascade do |t|
     t.text     "message"
     t.string   "username"
@@ -113,6 +123,13 @@ ActiveRecord::Schema.define(version: 20160503223632) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "variables", force: :cascade do |t|
+    t.string   "name"
+    t.string   "format"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "version_associations", force: :cascade do |t|
     t.integer "version_id"
     t.string  "foreign_key_name", null: false
@@ -134,4 +151,6 @@ ActiveRecord::Schema.define(version: 20160503223632) do
     t.index ["transaction_id"], name: "index_versions_on_transaction_id", using: :btree
   end
 
+  add_foreign_key "query_variables", "queries", column: "queries_id"
+  add_foreign_key "query_variables", "variables", column: "variables_id"
 end
