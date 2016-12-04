@@ -1,19 +1,20 @@
 .navbar.navbar-light.bg-faded.navbar-static-top
   %a.navbar-brand{:href => "/"}
     = ENV['APP_NAME']
-  %ul.nav.navbar-nav
-    %li.nav-item
-      = form_tag(queries_path, :method => 'post') do
-        = select_tag(:query_id, grouped_options_for_select(query_jump_options), prompt: "Quickjump", class: "select2", onchange: "this.form.submit();")
+  - if current_user
+    %ul.nav.navbar-nav
+      %li.nav-item
+        = form_tag(queries_path, :method => 'post') do
+          = select_tag(:query_id, grouped_options_for_select(query_jump_options), prompt: "Quickjump", class: "select2", onchange: "this.form.submit();")
 
-    .pull-xs-right
-      - if is_admin?
-        %li.nav-item
-          = link_to "Admin", "/admin" , class: "nav-link"
-      - if current_user
-        %li.nav-item
-          = image_tag(image_or_placeholder(current_user.image), height: 36, weight: 36)
-          = name_or_email(current_user)
-        %li.nav-item
-          = link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn-sm btn btn-danger-outline')
+      .pull-xs-right
+        - if is_admin?
+          %li.nav-item
+            = link_to "Admin", "/admin" , class: "nav-link"
+        - if current_user
+          %li.nav-item
+            = image_tag(image_or_placeholder(current_user.image), height: 36, weight: 36)
+            = name_or_email(current_user)
+          %li.nav-item
+            = link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn-sm btn btn-danger-outline')
 
