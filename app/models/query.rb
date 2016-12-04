@@ -1,8 +1,12 @@
 class Query < ApplicationRecord
   require "redis"
+  include Usable
+
   has_paper_trail
 
   belongs_to :data_source
+
+
 
   has_and_belongs_to_many :users
 

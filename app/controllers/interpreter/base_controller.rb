@@ -2,7 +2,7 @@ class Interpreter::BaseController < ApplicationController
 
   def show
     @query = get_query
-
+    @query.add_usage current_user
     @layout = get_layout
 
     @data = @query.get_data
